@@ -2,56 +2,117 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClinicPen — سجّل كل شيء، لا تنسَ شيئاً</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Fonts -->
+<!-- ══ SEO Primary ══ -->
+<title>ClinicPen — نظام إدارة عيادات متكامل للعراق | سجّل كل شيء، لا تنسَ شيئاً</title>
+<meta name="description" content="ClinicPen نظام إدارة عيادات متكامل مصمم للعيادات الصغيرة والمتوسطة في العراق. أدِر حجوزاتك، تابع مرضاك، واعرف أرباحك من هاتفك أو كمبيوترك بدون تنصيب. جرّب مجاناً أسبوعين.">
+<meta name="keywords" content="نظام إدارة عيادات, برنامج عيادة, إدارة مرضى, حجوزات طبية, سجلات طبية, برنامج عيادة العراق, نظام عيادة إلكتروني, إدارة عيادة الكترونية, ClinicPen, كلينيك بن, نظام حجوزات طبية, إدارة مالية عيادة, تقارير عيادة, نظام SaaS طبي عراق">
+<meta name="author" content="ClinicPen">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Arabic">
+<meta name="geo.region" content="IQ">
+<meta name="geo.country" content="Iraq">
+<link rel="canonical" href="https://clinicpen.iq/">
+
+<!-- ══ Open Graph (Facebook / WhatsApp) ══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clinicpen.iq/">
+<meta property="og:title" content="ClinicPen — نظام إدارة عيادات متكامل للعراق">
+<meta property="og:description" content="أدِر حجوزاتك، تابع مرضاك، واعرف أرباحك — من هاتفك أو كمبيوترك بدون تنصيب. أسبوعان مجاناً.">
+<meta property="og:image" content="https://clinicpen.iq/og-image.jpg">
+<meta property="og:locale" content="ar_IQ">
+<meta property="og:site_name" content="ClinicPen">
+
+<!-- ══ Twitter Card ══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClinicPen — نظام إدارة عيادات للعراق">
+<meta name="twitter:description" content="سجّل كل شيء، لا تنسَ شيئاً. إدارة عيادة ذكية من أي جهاز.">
+<meta name="twitter:image" content="https://clinicpen.iq/og-image.jpg">
+
+<!-- ══ Schema.org Structured Data ══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ClinicPen",
+  "alternateName": "كلينيك بن",
+  "description": "نظام إدارة عيادات متكامل مصمم للعيادات الصغيرة والمتوسطة في العراق",
+  "url": "https://clinicpen.iq",
+  "applicationCategory": "MedicalApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "50000",
+    "priceCurrency": "IQD",
+    "priceSpecification": { "@type": "RecurringCharge", "billingDuration": "P1M" }
+  },
+  "featureList": ["إدارة الحجوزات","سجلات المرضى","إدارة مالية","تحليلات وتقارير","إدارة الفريق"],
+  "inLanguage": "ar",
+  "areaServed": "IQ"
+}
+</script>
+
+<!-- ══ Fonts ══ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
+<!-- ══ Font Awesome ══ -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- GSAP -->
+<!-- ══ GSAP ══ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
 <style>
-/* ============================================================
-   VARIABLES & RESET
-============================================================ */
+/* ══════════════════════════════════════════
+   VARIABLES — Updated color palette
+══════════════════════════════════════════ */
 :root {
-  --primary: #3730a3;
-  --primary-light: #4f46e5;
-  --primary-dark: #2e2685;
-  --accent: #0ea5e9;
-  --accent-light: #38bdf8;
-  --white: #ffffff;
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-400: #94a3b8;
-  --gray-600: #475569;
-  --gray-800: #1e293b;
-  --success: #10b981;
-  --danger: #ef4444;
-  --danger-light: #fef2f2;
-  --success-light: #f0fdf4;
-  --radius: 16px;
-  --radius-sm: 8px;
-  --shadow: 0 4px 24px rgba(55,48,163,0.08);
-  --shadow-lg: 0 8px 48px rgba(55,48,163,0.15);
-  --transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
-  --nav-height: 72px;
-  --font: 'Tajawal', sans-serif;
+  --primary:       #5865f2;   /* vibrant indigo-blue */
+  --primary-dark:  #000080;   /* deep navy */
+  --primary-deep:  #181545;   /* darkest navy */
+  --primary-light: #7983f5;   /* lighter tint for hover */
+  --accent:        #5865f2;
+  --accent-light:  #818cf8;
+  --white:         #ffffff;
+  --gray-50:       #f8fafc;
+  --gray-100:      #f1f5f9;
+  --gray-200:      #e2e8f0;
+  --gray-400:      #94a3b8;
+  --gray-600:      #475569;
+  --gray-700:      #334155;
+  --gray-800:      #1e293b;
+  --success:       #10b981;
+  --danger:        #ef4444;
+  --radius:        16px;
+  --radius-sm:     10px;
+  --shadow:        0 4px 24px rgba(88,101,242,.09);
+  --shadow-lg:     0 12px 48px rgba(88,101,242,.18);
+  --tr:            all .3s cubic-bezier(.4,0,.2,1);
+  --font:          'Tajawal', sans-serif;
 }
 
+/* ══════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #f1f1f8; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+* { scrollbar-width: thin; scrollbar-color: var(--primary) #f1f1f8; }
+
+/* ══════════════════════════════════════════
+   RESET
+══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; font-size: 16px; }
-
 body {
   font-family: var(--font);
   color: var(--gray-800);
@@ -59,1749 +120,997 @@ body {
   overflow-x: hidden;
   direction: rtl;
 }
-
 a { text-decoration: none; color: inherit; }
-img, svg { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; }
 button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
 ul { list-style: none; }
 
-/* ============================================================
+/* ══════════════════════════════════════════
    UTILITY
-============================================================ */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+══════════════════════════════════════════ */
+.container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 20px; }
 
 .section-label {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(55,48,163,0.08), rgba(14,165,233,0.08));
+  background: linear-gradient(135deg,rgba(88,101,242,.09),rgba(0,0,128,.08));
   color: var(--primary);
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 6px 18px;
+  font-size: .82rem; font-weight: 700;
+  padding: 5px 16px;
   border-radius: 100px;
-  border: 1px solid rgba(55,48,163,0.15);
-  margin-bottom: 16px;
-  letter-spacing: 0.02em;
+  border: 1px solid rgba(88,101,242,.18);
+  margin-bottom: 14px;
 }
-
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 900;
-  color: var(--gray-800);
-  line-height: 1.25;
-  margin-bottom: 16px;
+  font-size: clamp(1.65rem,4vw,2.6rem);
+  font-weight: 900; color: var(--gray-800);
+  line-height: 1.25; margin-bottom: 14px;
 }
-
 .section-sub {
-  font-size: 1.1rem;
-  color: var(--gray-600);
-  line-height: 1.7;
-  max-width: 560px;
+  font-size: 1.05rem; color: var(--gray-600);
+  line-height: 1.75; max-width: 540px;
 }
-
-.section-header {
-  text-align: center;
-  margin-bottom: 64px;
-}
-
+.section-header { text-align: center; margin-bottom: 56px; }
 .section-header .section-sub { margin: 0 auto; }
 
-section { padding: 100px 0; position: relative; }
+section { padding: 88px 0; position: relative; }
 
+/* Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 26px;
   border-radius: 100px;
-  font-family: var(--font);
-  font-size: 1rem;
-  font-weight: 700;
-  transition: var(--transition);
-  cursor: pointer;
-  border: 2px solid transparent;
-  white-space: nowrap;
+  font-family: var(--font); font-size: .97rem; font-weight: 700;
+  transition: var(--tr);
+  cursor: pointer; border: 2px solid transparent;
+  white-space: nowrap; text-decoration: none;
 }
-
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: var(--white);
-  box-shadow: 0 4px 20px rgba(55,48,163,0.35);
+  box-shadow: 0 4px 18px rgba(88,101,242,.38);
 }
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(55,48,163,0.45);
-}
-
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(88,101,242,.48); }
 .btn-secondary {
-  background: transparent;
-  color: var(--white);
-  border-color: rgba(255,255,255,0.5);
+  background: transparent; color: var(--white);
+  border-color: rgba(255,255,255,.45);
 }
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: var(--white);
-  transform: translateY(-2px);
-}
-
+.btn-secondary:hover { background: rgba(255,255,255,.12); border-color: var(--white); transform: translateY(-2px); }
 .btn-outline {
-  background: transparent;
-  color: var(--primary);
+  background: transparent; color: var(--primary);
   border-color: var(--primary);
 }
-.btn-outline:hover {
-  background: var(--primary);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
+.btn-outline:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
 .btn-whatsapp {
-  background: #25D366;
-  color: var(--white);
-  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  background: #25D366; color: var(--white);
+  box-shadow: 0 4px 18px rgba(37,211,102,.35);
 }
-.btn-whatsapp:hover {
-  background: #1da851;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+.btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 26px rgba(37,211,102,.45); }
+.btn-disabled {
+  background: var(--gray-200) !important; color: var(--gray-400) !important;
+  box-shadow: none !important; cursor: not-allowed !important;
+  transform: none !important; pointer-events: none;
 }
 
-.fade-in { opacity: 0; transform: translateY(32px); }
-
-/* ============================================================
+/* ══════════════════════════════════════════
    NAVBAR
-============================================================ */
+══════════════════════════════════════════ */
 #navbar {
-  position: fixed;
-  top: 16px;
-  right: 0;
-  left: 0;
+  position: fixed; top: 12px; right: 0; left: 0;
   z-index: 900;
-  display: flex;
-  justify-content: center;
+  display: flex; justify-content: center;
   pointer-events: none;
 }
-
 .nav-inner {
   pointer-events: all;
-  width: calc(100% - 48px);
-  max-width: 1100px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.6);
+  width: calc(100% - 32px); max-width: 1100px;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.65);
   border-radius: 100px;
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 32px rgba(55,48,163,0.12);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 4px 28px rgba(88,101,242,.12);
+  transition: background .3s, box-shadow .3s;
 }
-
 #navbar.scrolled .nav-inner {
-  background: rgba(255,255,255,0.96);
-  box-shadow: 0 8px 40px rgba(55,48,163,0.18);
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 8px 36px rgba(88,101,242,.18);
 }
-
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex; align-items: center; gap: 9px;
+  flex-shrink: 0;
 }
-
 .nav-logo-icon {
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: .95rem;
 }
-
 .nav-logo-text {
-  font-size: 1.3rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.25rem; font-weight: 900;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  display: flex; align-items: center; gap: 2px;
+  flex: 1; justify-content: center;
 }
-
 .nav-links a {
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--gray-600);
-  transition: var(--transition);
+  padding: 7px 13px; border-radius: 100px;
+  font-size: .9rem; font-weight: 600; color: var(--gray-600);
+  transition: var(--tr);
 }
+.nav-links a:hover { color: var(--primary); background: rgba(88,101,242,.07); }
 
-.nav-links a:hover {
-  color: var(--primary);
-  background: rgba(55,48,163,0.06);
-}
+.nav-right { display: flex; align-items: center; gap: 10px; }
 
 .nav-cta {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white !important;
-  padding: 10px 22px !important;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  box-shadow: 0 4px 16px rgba(55,48,163,0.3);
-  transition: var(--transition);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white; padding: 9px 20px; border-radius: 100px;
+  font-size: .88rem; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(88,101,242,.3);
+  transition: var(--tr); white-space: nowrap;
+  border: none; cursor: pointer; font-family: var(--font);
 }
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(55,48,163,0.4);
-  background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
-  color: white !important;
-}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(88,101,242,.4); }
 
 /* Hamburger */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  display: none; flex-direction: column; gap: 4px;
+  cursor: pointer; padding: 6px; border-radius: 8px;
+  background: none; border: none;
 }
-.hamburger:hover { background: var(--gray-100); }
 .hamburger span {
-  width: 22px;
-  height: 2px;
-  background: var(--gray-800);
-  border-radius: 2px;
-  display: block;
-  transition: var(--transition);
+  width: 20px; height: 2px;
+  background: var(--gray-800); border-radius: 2px;
+  display: block; transition: var(--tr);
 }
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
 
-/* Mobile menu */
+/* Mobile menu overlay */
 .mobile-menu {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(15,20,40,0.6);
+  display: none; position: fixed;
+  inset: 0; z-index: 850;
+  background: rgba(24,21,69,.55);
   backdrop-filter: blur(4px);
-  z-index: 850;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
 }
-.mobile-menu.open {
-  opacity: 1;
-  pointer-events: all;
-}
+.mobile-menu.open { opacity: 1; pointer-events: all; }
 .mobile-menu-card {
-  position: absolute;
-  top: 90px;
-  right: 16px;
-  left: 16px;
-  background: white;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 16px 64px rgba(55,48,163,0.2);
-  transform: translateY(-20px);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: absolute; top: 74px; right: 12px; left: 12px;
+  background: white; border-radius: 20px; padding: 20px;
+  box-shadow: 0 16px 56px rgba(24,21,69,.22);
+  transform: translateY(-16px) scale(.97);
+  transition: transform .28s cubic-bezier(.4,0,.2,1);
 }
-.mobile-menu.open .mobile-menu-card { transform: translateY(0); }
-.mobile-menu-links {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 20px;
-}
+.mobile-menu.open .mobile-menu-card { transform: translateY(0) scale(1); }
+.mobile-menu-links { display: flex; flex-direction: column; gap: 2px; margin-bottom: 16px; }
 .mobile-menu-links a {
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--gray-700);
-  transition: var(--transition);
+  padding: 11px 14px; border-radius: 12px;
+  font-size: .97rem; font-weight: 600; color: var(--gray-700);
+  transition: var(--tr);
 }
-.mobile-menu-links a:hover {
-  background: var(--gray-100);
-  color: var(--primary);
-}
+.mobile-menu-links a:hover { background: var(--gray-100); color: var(--primary); }
+.mobile-menu-links hr { border: none; border-top: 1px solid var(--gray-100); margin: 4px 0; }
 
-/* ============================================================
+/* ══════════════════════════════════════════
    HERO
-============================================================ */
+══════════════════════════════════════════ */
 #hero {
-  min-height: 100vh;
+  min-height: 100svh;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 0;
 }
-
 .hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 50%, #0c4a6e 100%);
-  z-index: 0;
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-dark) 55%, #0d1b6e 100%);
 }
-
-/* Animated particles */
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0;
-}
-
+.hero-particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.particle { position: absolute; border-radius: 50%; opacity: 0; }
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(55,48,163,0.3) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(14,165,233,0.2) 0%, transparent 50%);
-  z-index: 2;
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    radial-gradient(ellipse at 25% 50%, rgba(88,101,242,.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 15%, rgba(0,0,128,.2) 0%, transparent 50%);
 }
-
 .hero-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  position: absolute; inset: 0; z-index: 2;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
-
 .hero-content {
-  position: relative;
-  z-index: 5;
+  position: relative; z-index: 5;
   text-align: center;
-  padding: 120px 24px 100px;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 120px 20px 96px;
+  max-width: 780px; margin: 0 auto;
+  width: 100%;
 }
-
 .hero-logo-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 32px;
-  font-size: 2rem;
-  color: white;
-  box-shadow: 0 8px 32px rgba(14,165,233,0.3);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  font-size: 1.8rem; color: white;
+  box-shadow: 0 8px 28px rgba(88,101,242,.35);
 }
-
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(14,165,233,0.15);
-  border: 1px solid rgba(14,165,233,0.3);
-  color: #7dd3fc;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 24px;
-}
-
-.hero-badge i { font-size: 0.75rem; }
-
-.hero-title {
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  font-weight: 900;
-  color: white;
-  line-height: 1.15;
-  margin-bottom: 24px;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.3);
-}
-
-.hero-title span {
-  background: linear-gradient(135deg, #7dd3fc, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(255,255,255,0.7);
-  line-height: 1.8;
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
-
-.hero-trust {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-}
-
-.trust-sep {
-  color: rgba(255,255,255,0.25);
-  font-size: 0.7rem;
-}
-
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: rgba(255,255,255,0.6);
-}
-
-.trust-item i {
-  color: #4ade80;
-  font-size: 0.8rem;
-}
-
-.scroll-arrow {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  color: rgba(255,255,255,0.4);
-  font-size: 1.4rem;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.scroll-arrow:hover { color: rgba(255,255,255,0.7); }
-
-/* ============================================================
-   PROBLEMS SECTION
-============================================================ */
-#problems {
-  background: var(--gray-50);
-}
-
-.problems-grid, .solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-.problem-card {
-  background: white;
-  border: 1px solid #fecaca;
-  border-radius: var(--radius);
-  padding: 24px;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  transition: var(--transition);
-}
-.problem-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(239,68,68,0.1);
-}
-
-.problem-icon {
-  width: 44px;
-  height: 44px;
-  background: #fee2e2;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ef4444;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.problem-card h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin-bottom: 4px;
-}
-
-.problem-card p {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-
-/* Divider */
-.problems-divider {
-  text-align: center;
-  margin: 48px 0;
-  position: relative;
-}
-
-.problems-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--gray-200);
-}
-
-.divider-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  padding: 12px 32px;
-  border-radius: 100px;
-  font-size: 1.1rem;
-  font-weight: 800;
-  box-shadow: 0 8px 32px rgba(55,48,163,0.3);
-}
-
-/* Solution cards */
-.solution-card {
-  background: white;
-  border: 1px solid #bbf7d0;
-  border-radius: var(--radius);
-  padding: 24px;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  transition: var(--transition);
-}
-.solution-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(16,185,129,0.12);
-}
-
-.solution-icon {
-  width: 44px;
-  height: 44px;
-  background: #d1fae5;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #059669;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.solution-card h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin-bottom: 4px;
-}
-
-.solution-card p {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  line-height: 1.5;
-}
-
-/* ============================================================
-   SCREENSHOT SINGLE
-============================================================ */
-#app-preview {
-  background: white;
-}
-
-.browser-frame {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 32px 80px rgba(55,48,163,0.15);
-  overflow: hidden;
-  border: 1px solid var(--gray-200);
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.browser-bar {
-  background: #f1f5f9;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid var(--gray-200);
-}
-
-.browser-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.browser-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-.browser-dot:nth-child(1) { background: #ff5f57; }
-.browser-dot:nth-child(2) { background: #febc2e; }
-.browser-dot:nth-child(3) { background: #28c840; }
-
-.browser-url {
-  flex: 1;
-  background: white;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 0.8rem;
-  color: var(--gray-400);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--gray-200);
-}
-
-.browser-url i { color: var(--success); font-size: 0.75rem; }
-
-.browser-screen {
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 50%, #cffafe 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 16px;
-  color: var(--primary);
-}
-
-.browser-screen i { font-size: 3rem; opacity: 0.4; }
-.browser-screen span { font-size: 0.95rem; font-weight: 600; opacity: 0.5; }
-
-/* ============================================================
-   FEATURES
-============================================================ */
-#features {
-  background: var(--gray-50);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.feature-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(55,48,163,0.15);
-}
-
-.feature-card:hover::before { transform: scaleX(1); }
-
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, rgba(55,48,163,0.08), rgba(14,165,233,0.08));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 1.4rem;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(88,101,242,.18);
+  border: 1px solid rgba(88,101,242,.35);
+  color: #c7cbfc;
+  font-size: .82rem; font-weight: 600;
+  padding: 5px 14px; border-radius: 100px;
   margin-bottom: 20px;
 }
-
-.feature-card h3 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--gray-800);
-  margin-bottom: 10px;
+.hero-title {
+  font-size: clamp(2rem,6vw,4.2rem);
+  font-weight: 900; color: white;
+  line-height: 1.15; margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,.25);
 }
-
-.feature-card p {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  line-height: 1.65;
+.hero-title span {
+  background: linear-gradient(135deg, #a5b4fc, #818cf8, #c7d2fe);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
-/* ============================================================
-   SCREENSHOTS GALLERY
-============================================================ */
-#gallery {
-  background: white;
+.hero-sub {
+  font-size: clamp(.95rem,2vw,1.15rem);
+  color: rgba(255,255,255,.72);
+  line-height: 1.8; margin-bottom: 36px;
+  max-width: 580px; margin-left: auto; margin-right: auto;
 }
+.hero-buttons {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 28px;
+}
+.hero-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap; font-size: .88rem;
+}
+.trust-item { display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,.6); }
+.trust-item i { color: #4ade80; font-size: .75rem; }
+.trust-sep { color: rgba(255,255,255,.22); }
+.scroll-arrow {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%); z-index: 5;
+  color: rgba(255,255,255,.38); font-size: 1.3rem;
+  cursor: pointer; transition: color .3s;
+}
+.scroll-arrow:hover { color: rgba(255,255,255,.7); }
 
-.gallery-grid {
+/* ══════════════════════════════════════════
+   PROBLEMS
+══════════════════════════════════════════ */
+#problems { background: var(--gray-50); }
+.problems-grid, .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px; margin-bottom: 40px;
+}
+.problem-card, .solution-card {
+  background: white; border-radius: var(--radius); padding: 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+  transition: var(--tr);
+}
+.problem-card { border: 1px solid #fecaca; }
+.problem-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(239,68,68,.1); }
+.solution-card { border: 1px solid #bbf7d0; }
+.solution-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(16,185,129,.1); }
+.problem-icon {
+  width: 42px; height: 42px; background: #fee2e2;
+  border-radius: 11px; display: flex; align-items: center; justify-content: center;
+  color: #ef4444; font-size: .95rem; flex-shrink: 0;
+}
+.solution-icon {
+  width: 42px; height: 42px; background: #d1fae5;
+  border-radius: 11px; display: flex; align-items: center; justify-content: center;
+  color: #059669; font-size: .95rem; flex-shrink: 0;
+}
+.problem-card h4, .solution-card h4 {
+  font-size: .97rem; font-weight: 700; color: var(--gray-800); margin-bottom: 3px;
+}
+.problem-card p, .solution-card p {
+  font-size: .84rem; color: var(--gray-600); line-height: 1.5;
+}
+.problems-divider {
+  text-align: center; margin: 40px 0; position: relative;
+}
+.problems-divider::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: var(--gray-200);
+}
+.divider-badge {
+  position: relative; display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white; padding: 11px 28px; border-radius: 100px;
+  font-size: 1.05rem; font-weight: 800;
+  box-shadow: 0 8px 28px rgba(88,101,242,.3);
 }
 
-.gallery-card {
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
+/* ══════════════════════════════════════════
+   APP PREVIEW
+══════════════════════════════════════════ */
+#app-preview { background: white; }
+.browser-frame {
+  background: white; border-radius: 14px;
+  box-shadow: 0 28px 72px rgba(88,101,242,.14);
+  overflow: hidden; border: 1px solid var(--gray-200);
+  max-width: 880px; margin: 0 auto;
+}
+.browser-bar {
+  background: #f1f5f9; padding: 11px 14px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--gray-200);
+}
+.browser-dots { display: flex; gap: 5px; }
+.browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+.browser-dot:nth-child(1) { background:#ff5f57; }
+.browser-dot:nth-child(2) { background:#febc2e; }
+.browser-dot:nth-child(3) { background:#28c840; }
+.browser-url {
+  flex: 1; background: white; border-radius: 6px;
+  padding: 5px 11px; font-size: .78rem; color: var(--gray-400);
+  display: flex; align-items: center; gap: 7px;
+  border: 1px solid var(--gray-200);
+}
+.browser-url i { color: var(--success); font-size: .72rem; }
+.browser-screen {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 50%, #ede9fe 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px; color: var(--primary);
+}
+.browser-screen i { font-size: 2.5rem; opacity: .35; }
+.browser-screen span { font-size: .9rem; font-weight: 600; opacity: .45; }
+
+/* ══════════════════════════════════════════
+   FEATURES
+══════════════════════════════════════════ */
+#features { background: var(--gray-50); }
+.features-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+}
+.feature-card {
+  background: white; border-radius: var(--radius); padding: 28px 24px;
+  border: 1px solid var(--gray-200); box-shadow: var(--shadow);
+  transition: var(--tr); position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; right: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  transform: scaleX(0); transform-origin: right;
+  transition: transform .4s ease;
+}
+.feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(88,101,242,.15); }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg,rgba(88,101,242,.09),rgba(0,0,128,.07));
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 1.3rem; margin-bottom: 18px;
+}
+.feature-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--gray-800); margin-bottom: 8px; }
+.feature-card p { font-size: .875rem; color: var(--gray-600); line-height: 1.65; }
+
+/* ══════════════════════════════════════════
+   QUICK ACTIONS SECTION (below features)
+══════════════════════════════════════════ */
+#quick-actions {
+  background: var(--gray-50);
+  padding: 0 0 80px;
+}
+.quick-actions-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.quick-action-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: 100px;
+  padding: 13px 24px;
+  font-size: .95rem; font-weight: 700;
+  color: var(--primary);
+  cursor: pointer; transition: var(--tr);
+  font-family: var(--font);
   box-shadow: var(--shadow);
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-.gallery-card.active {
+.quick-action-btn i { font-size: 1rem; }
+.quick-action-btn:hover {
+  background: var(--primary);
+  color: white;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(55,48,163,0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(88,101,242,.3);
+}
+.quick-actions-title {
+  text-align: center;
+  font-size: .85rem; font-weight: 600; color: var(--gray-400);
+  margin-bottom: 20px; text-transform: uppercase; letter-spacing: .05em;
 }
 
+/* ══════════════════════════════════════════
+   SCREENSHOT CAROUSEL (NEW)
+══════════════════════════════════════════ */
+#carousel-section {
+  background: white;
+  padding: 88px 0;
+  overflow: hidden;
+}
+.carousel-wrapper {
+  max-width: 900px; margin: 0 auto;
+  position: relative; user-select: none;
+}
+.carousel-track-outer {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(88,101,242,.15);
+  cursor: grab;
+  position: relative;
+  aspect-ratio: 3/2;
+}
+.carousel-track-outer:active { cursor: grabbing; }
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.carousel-slide {
+  min-width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+  position: relative;
+  font-size: 2.2rem;
+}
+/* Six distinct gradient slides */
+.carousel-slide:nth-child(1) { background: linear-gradient(135deg,#e0e7ff,#ede9fe); color: var(--primary); }
+.carousel-slide:nth-child(2) { background: linear-gradient(135deg,#dbeafe,#e0f2fe); color: var(--primary-dark); }
+.carousel-slide:nth-child(3) { background: linear-gradient(135deg,#d1fae5,#ecfdf5); color: #065f46; }
+.carousel-slide:nth-child(4) { background: linear-gradient(135deg,#fef3c7,#fef9c3); color: #92400e; }
+.carousel-slide:nth-child(5) { background: linear-gradient(135deg,#ede9fe,#fce7f3); color: #5b21b6; }
+.carousel-slide:nth-child(6) { background: linear-gradient(135deg,#f0fdf4,#dcfce7); color: #166534; }
+.carousel-slide i { opacity: .35; font-size: 3rem; }
+.carousel-slide-label {
+  font-size: 1rem; font-weight: 700; opacity: .5;
+  position: absolute; bottom: 20px; right: 20px;
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(8px);
+  padding: 5px 14px; border-radius: 100px;
+}
+/* Dots */
+.carousel-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 20px;
+}
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 100px;
+  background: var(--gray-200);
+  cursor: pointer; transition: all .3s;
+  border: none;
+}
+.carousel-dot.active { background: var(--primary); width: 24px; }
+/* Nav arrows */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%;
+  background: white; border: 1px solid var(--gray-200);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10;
+  box-shadow: 0 4px 12px rgba(88,101,242,.12);
+  transition: var(--tr); color: var(--primary); font-size: .9rem;
+}
+.carousel-arrow:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.carousel-prev { right: -20px; }
+.carousel-next { left: -20px; }
+
+/* ══════════════════════════════════════════
+   GALLERY
+══════════════════════════════════════════ */
+#gallery { background: var(--gray-50); }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 18px;
+}
+.gallery-card {
+  border-radius: var(--radius); overflow: hidden;
+  cursor: pointer; position: relative;
+  box-shadow: var(--shadow); border: 2px solid transparent;
+  transition: border-color .3s, box-shadow .3s;
+}
+.gallery-card.active { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(88,101,242,.12); }
 .gallery-img {
   aspect-ratio: 3/2;
   background: linear-gradient(135deg, #e0e7ff, #dbeafe);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 2.2rem;
-  opacity: 0.4;
-  transition: opacity 0.3s;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 2rem; opacity: .4;
+  transition: opacity .3s;
 }
-
 .gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(55,48,163,0.9) 0%, rgba(55,48,163,0.4) 50%, transparent 100%);
-  opacity: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-  transition: opacity 0.3s ease;
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(24,21,69,.9) 0%, rgba(24,21,69,.4) 50%, transparent 100%);
+  opacity: 0; display: flex; align-items: flex-end; padding: 18px;
+  transition: opacity .3s;
 }
-
 .gallery-card:hover .gallery-overlay { opacity: 1; }
-.gallery-card:hover .gallery-img { opacity: 0.6; }
-
-.gallery-info h4 {
-  font-size: 1rem;
-  font-weight: 800;
-  color: white;
-  margin-bottom: 4px;
-}
-
-.gallery-info p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.75);
-}
-
+.gallery-card:hover .gallery-img { opacity: .6; }
+.gallery-info h4 { font-size: .97rem; font-weight: 800; color: white; margin-bottom: 3px; }
+.gallery-info p { font-size: .78rem; color: rgba(255,255,255,.75); }
 .gallery-label {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: white;
-  color: var(--primary);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 100px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: absolute; top: 10px; right: 10px;
+  background: white; color: var(--primary);
+  font-size: .78rem; font-weight: 700;
+  padding: 3px 11px; border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 
-/* ============================================================
+/* ══════════════════════════════════════════
    HOW IT WORKS
-============================================================ */
-#how-it-works {
-  background: var(--gray-50);
-}
-
+══════════════════════════════════════════ */
+#how-it-works { background: white; }
 .steps-wrapper {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-}
-
-.step-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 36px 28px;
-  text-align: center;
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-}
-
-.step-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-
-.step-number {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.4rem;
-  font-weight: 900;
-  margin: 0 auto 20px;
-  box-shadow: 0 4px 16px rgba(55,48,163,0.3);
-}
-
-.step-icon {
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(135deg, rgba(55,48,163,0.08), rgba(14,165,233,0.08));
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 1.3rem;
-  margin: 0 auto 16px;
-}
-
-.step-card h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--gray-800);
-  margin-bottom: 12px;
-}
-
-.step-card p {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  line-height: 1.65;
-}
-
-.step-connector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-400);
-  font-size: 1.3rem;
-}
-
-/* ============================================================
-   PRICING
-============================================================ */
-#pricing {
-  background: white;
-}
-
-.pricing-wrapper {
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.pricing-card {
-  background: white;
-  border-radius: 24px;
-  padding: 48px;
-  border: 2px solid var(--gray-200);
-  box-shadow: 0 16px 64px rgba(55,48,163,0.1);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.pricing-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-.pricing-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 6px 20px;
-  border-radius: 100px;
-  margin-bottom: 28px;
-}
-
-.pricing-price {
-  margin-bottom: 8px;
-}
-
-.pricing-price .amount {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: var(--gray-800);
-  line-height: 1;
-}
-
-.pricing-price .currency {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--gray-600);
-}
-
-.pricing-price .period {
-  font-size: 1rem;
-  color: var(--gray-400);
-  margin-right: 4px;
-}
-
-.pricing-trial {
-  display: inline-flex;
+  grid-template-columns: 1fr 48px 1fr 48px 1fr;
   align-items: center;
   gap: 8px;
-  background: #d1fae5;
-  color: #065f46;
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 8px 20px;
-  border-radius: 100px;
-  margin: 16px 0 32px;
 }
-
-.pricing-features {
-  text-align: right;
-  margin-bottom: 36px;
-}
-
-.pricing-features li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--gray-100);
-  font-size: 0.95rem;
-  color: var(--gray-700);
-  font-weight: 500;
-}
-
-.pricing-features li:last-child { border: none; }
-
-.pricing-features li i {
-  color: var(--success);
-  font-size: 0.9rem;
-  flex-shrink: 0;
-  width: 20px;
-  text-align: center;
-}
-
-.pricing-note {
-  font-size: 0.85rem;
-  color: var(--gray-400);
-  margin-top: 16px;
-}
-
-/* ============================================================
-   FAQ
-============================================================ */
-#faq {
+.step-card {
   background: var(--gray-50);
+  border-radius: var(--radius); padding: 32px 24px;
+  text-align: center; border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow); transition: var(--tr);
+  opacity: 1; /* always visible — not hidden */
 }
-
-.faq-list {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.faq-item {
-  background: white;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--gray-200);
-  margin-bottom: 12px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-}
-
-.faq-item.open { box-shadow: 0 4px 20px rgba(55,48,163,0.1); border-color: rgba(55,48,163,0.2); }
-
-.faq-question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  gap: 16px;
-  user-select: none;
-  transition: background 0.2s;
-}
-.faq-question:hover { background: var(--gray-50); }
-
-.faq-icon {
-  width: 32px;
-  height: 32px;
+.step-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.step-number {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border-radius: 50%;
-  background: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 0.85rem;
-  flex-shrink: 0;
-  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.3rem; font-weight: 900;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 14px rgba(88,101,242,.3);
+}
+.step-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg,rgba(88,101,242,.08),rgba(0,0,128,.07));
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 1.25rem; margin: 0 auto 14px;
+}
+.step-card h3 { font-size: 1.08rem; font-weight: 800; color: var(--gray-800); margin-bottom: 10px; }
+.step-card p { font-size: .875rem; color: var(--gray-600); line-height: 1.65; }
+.step-connector {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-400); font-size: 1.2rem;
 }
 
-.faq-item.open .faq-icon {
-  background: var(--primary);
-  color: white;
-  transform: rotate(45deg);
+/* ══════════════════════════════════════════
+   PRICING
+══════════════════════════════════════════ */
+#pricing { background: var(--gray-50); }
+.pricing-wrapper { max-width: 500px; margin: 0 auto; }
+.pricing-card {
+  background: white; border-radius: 22px; padding: 44px;
+  border: 2px solid var(--gray-200);
+  box-shadow: 0 16px 60px rgba(88,101,242,.1);
+  text-align: center; position: relative; overflow: hidden;
 }
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
+.pricing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
 }
-
-.faq-answer-inner {
-  padding: 0 24px 20px;
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.75;
+.pricing-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white; font-size: .83rem; font-weight: 700;
+  padding: 5px 18px; border-radius: 100px; margin-bottom: 24px;
 }
+.pricing-price .amount { font-size: 3.2rem; font-weight: 900; color: var(--gray-800); line-height: 1; }
+.pricing-price .currency { font-size: 1.3rem; font-weight: 700; color: var(--gray-600); }
+.pricing-price .period { font-size: .95rem; color: var(--gray-400); margin-right: 4px; }
+.pricing-trial {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #d1fae5; color: #065f46;
+  font-size: .875rem; font-weight: 700;
+  padding: 7px 18px; border-radius: 100px; margin: 14px 0 28px;
+}
+.pricing-features { text-align: right; margin-bottom: 32px; }
+.pricing-features li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 0; border-bottom: 1px solid var(--gray-100);
+  font-size: .92rem; color: var(--gray-700); font-weight: 500;
+}
+.pricing-features li:last-child { border: none; }
+.pricing-features li i { color: var(--success); font-size: .88rem; flex-shrink: 0; width: 18px; text-align: center; }
+.pricing-note { font-size: .83rem; color: var(--gray-400); margin-top: 14px; }
 
-/* ============================================================
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+#faq { background: white; }
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item {
+  background: var(--gray-50); border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-200); margin-bottom: 10px;
+  overflow: hidden; transition: box-shadow .3s;
+}
+.faq-item.open { box-shadow: 0 4px 18px rgba(88,101,242,.1); border-color: rgba(88,101,242,.2); background: white; }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; cursor: pointer;
+  font-size: .97rem; font-weight: 700; color: var(--gray-800);
+  gap: 14px; user-select: none; transition: background .2s;
+}
+.faq-question:hover { background: rgba(88,101,242,.03); }
+.faq-icon {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--gray-200);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: .82rem; flex-shrink: 0;
+  transition: var(--tr);
+}
+.faq-item.open .faq-icon { background: var(--primary); color: white; transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.4,0,.2,1); }
+.faq-answer-inner { padding: 0 22px 18px; font-size: .92rem; color: var(--gray-600); line-height: 1.75; }
+
+/* ══════════════════════════════════════════
    FINAL CTA
-============================================================ */
+══════════════════════════════════════════ */
 #cta-final {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, #1d4ed8 100%);
-  padding: 100px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+  padding: 88px 0; text-align: center; position: relative; overflow: hidden;
 }
-
 #cta-final::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
-
-.cta-final-content {
-  position: relative;
-  z-index: 2;
-}
-
+.cta-final-content { position: relative; z-index: 2; }
 .cta-final-content h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  color: white;
-  margin-bottom: 20px;
-  line-height: 1.2;
+  font-size: clamp(1.8rem,5vw,3.2rem);
+  font-weight: 900; color: white; margin-bottom: 16px; line-height: 1.2;
 }
-
-.cta-final-content p {
-  font-size: 1.15rem;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 40px;
-}
-
+.cta-final-content p { font-size: 1.08rem; color: rgba(255,255,255,.7); margin-bottom: 36px; }
 .cta-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 24px;
 }
-
 .cta-trust {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-  flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; color: rgba(255,255,255,.5); font-size: .88rem; flex-wrap: wrap;
 }
 
-/* ============================================================
+/* ══════════════════════════════════════════
    FOOTER
-============================================================ */
-footer {
-  background: var(--gray-800);
-  color: rgba(255,255,255,0.6);
-  padding: 60px 0 32px;
-}
-
+══════════════════════════════════════════ */
+footer { background: var(--primary-deep); color: rgba(255,255,255,.55); padding: 56px 0 28px; }
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 32px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 44px; padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 28px;
 }
-
-.footer-brand .nav-logo { margin-bottom: 12px; }
-.footer-brand .nav-logo-text { -webkit-text-fill-color: white; color: white; background: none; }
-
-.footer-tagline {
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 16px;
-}
-
-.footer-copy {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.3);
-}
-
-.footer-links h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 16px;
-}
-
-.footer-links ul {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-links a {
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.45);
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: rgba(255,255,255,0.85); }
-
-.footer-social h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 16px;
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-}
-
+.footer-tagline { font-size: .84rem; color: rgba(255,255,255,.38); margin-bottom: 12px; }
+.footer-copy { font-size: .78rem; color: rgba(255,255,255,.28); }
+.footer-links h4 { font-size: .88rem; font-weight: 700; color: rgba(255,255,255,.78); margin-bottom: 14px; }
+.footer-links ul { display: flex; flex-direction: column; gap: 9px; }
+.footer-links a { font-size: .84rem; color: rgba(255,255,255,.42); transition: color .2s; }
+.footer-links a:hover { color: rgba(255,255,255,.82); }
+.footer-social h4 { font-size: .88rem; font-weight: 700; color: rgba(255,255,255,.78); margin-bottom: 14px; }
+.social-icons { display: flex; gap: 9px; }
 .social-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: rgba(255,255,255,0.5);
-  transition: var(--transition);
-  cursor: pointer;
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; color: rgba(255,255,255,.45);
+  transition: var(--tr); cursor: pointer;
 }
-
 .social-icon.wa:hover { background: #25d366; color: white; border-color: #25d366; }
 .social-icon.ig:hover { background: #e1306c; color: white; border-color: #e1306c; }
 .social-icon.fb:hover { background: #1877f2; color: white; border-color: #1877f2; }
 .social-icon.tg:hover { background: #2aabee; color: white; border-color: #2aabee; }
 
-/* ============================================================
-   FLOATING ELEMENTS
-============================================================ */
-/* Scroll to top */
+/* ══════════════════════════════════════════
+   SCROLL TO TOP
+══════════════════════════════════════════ */
 #scroll-top {
-  position: fixed;
-  bottom: 28px;
-  left: 28px;
-  z-index: 800;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary);
+  position: fixed; bottom: 22px; left: 22px; z-index: 800;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(55,48,163,0.35);
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: var(--transition);
-  pointer-events: none;
-  font-size: 0.9rem;
-}
-
-#scroll-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-#scroll-top:hover { background: var(--primary-light); transform: translateY(-2px); }
-
-/* Side action buttons */
-#side-actions {
-  position: fixed;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 800;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.side-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
-  padding: 10px 16px;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  box-shadow: 0 4px 16px rgba(55,48,163,0.3);
-  cursor: pointer;
-  transition: var(--transition);
-  white-space: nowrap;
-  font-family: var(--font);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(88,101,242,.35);
+  cursor: pointer; opacity: 0; transform: translateY(10px);
+  transition: var(--tr); pointer-events: none; font-size: .88rem;
   border: none;
 }
-.side-btn:hover {
-  transform: translateX(-4px);
-  box-shadow: 0 6px 24px rgba(55,48,163,0.4);
-}
-.side-btn i { font-size: 0.9rem; }
+#scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+#scroll-top:hover { transform: translateY(-2px); }
 
-/* ============================================================
+/* ══════════════════════════════════════════
    MODALS
-============================================================ */
+══════════════════════════════════════════ */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(15,20,45,0.7);
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(24,21,69,.68);
   backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  opacity: 0; pointer-events: none; transition: opacity .28s ease;
 }
-
-.modal-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
+.modal-overlay.open { opacity: 1; pointer-events: all; }
 .modal-card {
-  background: white;
-  border-radius: 24px;
-  width: 100%;
-  max-width: 640px;
-  max-height: 88vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 32px 80px rgba(15,20,45,0.4);
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  background: white; border-radius: 22px;
+  width: 100%; max-width: 620px;
+  max-height: 90vh; overflow-y: auto; position: relative;
+  box-shadow: 0 32px 80px rgba(24,21,69,.45);
+  transform: scale(.93) translateY(18px);
+  transition: transform .32s cubic-bezier(.34,1.56,.64,1);
 }
-
-.modal-overlay.open .modal-card {
-  transform: scale(1) translateY(0);
-}
-
-.modal-card.wide { max-width: 760px; }
-
+.modal-overlay.open .modal-card { transform: scale(1) translateY(0); }
+.modal-card.wide { max-width: 740px; }
 .modal-header {
-  padding: 28px 32px 20px;
-  border-bottom: 1px solid var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  position: sticky;
-  top: 0;
-  background: white;
-  z-index: 2;
-  border-radius: 24px 24px 0 0;
+  padding: 24px 28px 18px; border-bottom: 1px solid var(--gray-100);
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  position: sticky; top: 0; background: white; z-index: 2;
+  border-radius: 22px 22px 0 0;
 }
-
-.modal-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--gray-800);
-}
-
+.modal-title { font-size: 1.12rem; font-weight: 800; color: var(--gray-800); }
 .modal-close {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--gray-600);
-  font-size: 1rem;
-  transition: var(--transition);
-  flex-shrink: 0;
-  border: none;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--gray-100); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gray-600); font-size: .95rem;
+  transition: var(--tr); flex-shrink: 0; border: none;
 }
 .modal-close:hover { background: var(--gray-200); color: var(--gray-800); }
-
-.modal-body { padding: 28px 32px 32px; }
-
-/* Modal 1 — How it works */
-.modal-intro {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  line-height: 1.75;
-  margin-bottom: 28px;
-}
-
+.modal-body { padding: 24px 28px 28px; }
+.modal-intro { font-size: .92rem; color: var(--gray-600); line-height: 1.75; margin-bottom: 24px; }
 .modal-roles {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 28px;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 12px; margin-bottom: 24px;
 }
-
 .role-card {
-  background: var(--gray-50);
-  border-radius: 12px;
-  padding: 20px 16px;
-  text-align: center;
-  border: 1px solid var(--gray-200);
+  background: var(--gray-50); border-radius: 11px; padding: 18px 14px;
+  text-align: center; border: 1px solid var(--gray-200);
 }
-
 .role-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  margin: 0 auto 12px;
+  width: 44px; height: 44px; border-radius: 11px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.1rem; margin: 0 auto 10px;
 }
-
-.role-card h4 {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--gray-800);
-  margin-bottom: 6px;
-}
-
-.role-card p {
-  font-size: 0.8rem;
-  color: var(--gray-500);
-  line-height: 1.5;
-}
-
-.modal-pages-title {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--gray-700);
-  margin-bottom: 16px;
-}
-
-.modal-pages {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
+.role-card h4 { font-size: .92rem; font-weight: 800; color: var(--gray-800); margin-bottom: 5px; }
+.role-card p { font-size: .78rem; color: var(--gray-500); line-height: 1.45; }
+.modal-pages-title { font-size: .97rem; font-weight: 800; color: var(--gray-700); margin-bottom: 14px; }
+.modal-pages { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
 .page-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: var(--gray-50);
-  border-radius: 10px;
-  padding: 14px;
+  display: flex; align-items: flex-start; gap: 11px;
+  background: var(--gray-50); border-radius: 10px; padding: 13px;
   border: 1px solid var(--gray-200);
 }
-
-.page-item i {
-  color: var(--primary);
-  font-size: 1rem;
-  margin-top: 2px;
-}
-
-.page-item h5 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--gray-800);
-  margin-bottom: 2px;
-}
-
-.page-item p {
-  font-size: 0.8rem;
-  color: var(--gray-500);
-  line-height: 1.4;
-}
-
-/* Modal 2 — Subscribe */
-.terms-list {
-  margin-bottom: 24px;
-}
-
+.page-item i { color: var(--primary); font-size: .97rem; margin-top: 2px; }
+.page-item h5 { font-size: .875rem; font-weight: 700; color: var(--gray-800); margin-bottom: 2px; }
+.page-item p { font-size: .78rem; color: var(--gray-500); line-height: 1.4; }
+.terms-list { margin-bottom: 22px; }
 .terms-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--gray-100);
-  font-size: 0.9rem;
-  color: var(--gray-700);
-  line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 9px 0; border-bottom: 1px solid var(--gray-100);
+  font-size: .875rem; color: var(--gray-700); line-height: 1.5;
 }
-
 .terms-list li:last-child { border: none; }
-
-.terms-list li i {
-  color: var(--primary);
-  font-size: 0.8rem;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
+.terms-list li i { color: var(--primary); font-size: .78rem; margin-top: 4px; flex-shrink: 0; }
 .policy-link {
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: color 0.2s;
+  color: var(--primary); font-weight: 600; font-size: .85rem;
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-bottom: 18px; cursor: pointer; transition: color .2s;
 }
-.policy-link:hover { color: var(--accent); }
-
+.policy-link:hover { color: var(--primary-dark); }
 .checkbox-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  user-select: none;
+  display: flex; align-items: center; gap: 11px;
+  margin-bottom: 18px; cursor: pointer; user-select: none;
 }
-
 .checkbox-row input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--primary);
-  cursor: pointer;
-  flex-shrink: 0;
+  width: 19px; height: 19px; accent-color: var(--primary);
+  cursor: pointer; flex-shrink: 0;
 }
-
-.checkbox-row span {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--gray-700);
-}
-
-.btn-disabled {
-  background: var(--gray-200) !important;
-  color: var(--gray-400) !important;
-  box-shadow: none !important;
-  cursor: not-allowed !important;
-  transform: none !important;
-  pointer-events: none;
-}
-
-/* Step 2 */
+.checkbox-row span { font-size: .88rem; font-weight: 600; color: var(--gray-700); }
 .success-icon {
-  width: 64px;
-  height: 64px;
-  background: #d1fae5;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #059669;
-  font-size: 1.8rem;
-  margin: 0 auto 16px;
+  width: 60px; height: 60px; background: #d1fae5; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #059669; font-size: 1.7rem; margin: 0 auto 14px;
 }
-
 .code-box {
-  background: var(--gray-50);
-  border: 2px dashed var(--primary);
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--gray-50); border: 2px dashed var(--primary);
+  border-radius: 11px; padding: 18px;
   text-align: center;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: 0.04em;
-  margin: 20px 0;
-  position: relative;
-  word-break: break-all;
+  font-family: 'Courier New', monospace; font-size: 1.05rem;
+  font-weight: 700; color: var(--primary);
+  letter-spacing: .04em; margin: 18px 0;
+  position: relative; word-break: break-all;
 }
-
 .copy-btn {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: var(--font);
-  transition: background 0.2s;
+  position: absolute; top: 8px; left: 8px;
+  background: var(--primary); color: white; border: none;
+  border-radius: 6px; padding: 4px 9px;
+  font-size: .72rem; font-weight: 700; cursor: pointer;
+  font-family: var(--font); transition: background .2s;
 }
-.copy-btn:hover { background: var(--primary-light); }
-
-.code-instructions {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  text-align: center;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-/* Modal 3 — Policy */
-.policy-section {
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--gray-100);
-}
+.copy-btn:hover { background: var(--primary-dark); }
+.code-instructions { font-size: .88rem; color: var(--gray-600); text-align: center; margin-bottom: 18px; line-height: 1.6; }
+.policy-section { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-100); }
 .policy-section:last-child { border: none; margin-bottom: 0; }
-
 .policy-section h4 {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: .97rem; font-weight: 800; color: var(--primary);
+  margin-bottom: 9px; display: flex; align-items: center; gap: 7px;
 }
-
-.policy-section p {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  line-height: 1.75;
-}
-
-/* Modal 4 — Help */
-.help-tabs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
+.policy-section p { font-size: .875rem; color: var(--gray-600); line-height: 1.75; }
+.help-tabs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 22px; }
 .help-tab {
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: 2px solid var(--gray-200);
-  color: var(--gray-600);
-  background: white;
-  font-family: var(--font);
-  transition: var(--transition);
+  padding: 7px 14px; border-radius: 100px;
+  font-size: .83rem; font-weight: 700; cursor: pointer;
+  border: 2px solid var(--gray-200); color: var(--gray-600);
+  background: white; font-family: var(--font); transition: var(--tr);
 }
-
-.help-tab.active {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: rgba(55,48,163,0.05);
-}
-
+.help-tab.active { border-color: var(--primary); color: var(--primary); background: rgba(88,101,242,.06); }
 .help-panel { display: none; }
 .help-panel.active { display: block; }
-
-.help-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
+.help-steps { display: flex; flex-direction: column; gap: 12px; }
 .help-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  background: var(--gray-50);
-  border-radius: 10px;
-  padding: 14px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--gray-50); border-radius: 10px; padding: 13px 14px;
 }
-
 .help-step-num {
-  width: 28px;
-  height: 28px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
-  flex-shrink: 0;
+  width: 26px; height: 26px; background: var(--primary);
+  color: white; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; font-weight: 800; flex-shrink: 0;
 }
+.help-step p { font-size: .875rem; color: var(--gray-700); line-height: 1.5; padding-top: 2px; }
 
-.help-step p {
-  font-size: 0.9rem;
-  color: var(--gray-700);
-  line-height: 1.5;
-  padding-top: 3px;
-}
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+══════════════════════════════════════════ */
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-@media (max-width: 900px) {
+/* ── Tablet ──────────────────────────────── */
+@media (max-width: 960px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: block; }
 
-  .problems-grid, .solutions-grid, .features-grid { grid-template-columns: 1fr 1fr; }
-
+  .problems-grid, .solutions-grid { grid-template-columns: 1fr 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
 
-  .steps-wrapper {
-    grid-template-columns: 1fr;
-  }
+  .steps-wrapper { grid-template-columns: 1fr; }
   .step-connector { display: none; }
 
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
 
-  #side-actions { display: none; }
-
-  .modal-roles { grid-template-columns: 1fr; }
-  .modal-pages { grid-template-columns: 1fr; }
+  .modal-roles { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── Mobile ──────────────────────────────── */
 @media (max-width: 600px) {
-  .problems-grid, .solutions-grid, .features-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .pricing-card { padding: 32px 24px; }
-  section { padding: 72px 0; }
-  .nav-inner { padding: 10px 16px; }
+  :root { --radius: 14px; }
+  section { padding: 60px 0; }
 
+  /* Navbar */
+  .nav-inner { padding: 9px 14px; width: calc(100% - 20px); }
+  .nav-logo-text { font-size: 1.1rem; }
+  .nav-logo-icon { width: 32px; height: 32px; font-size: .85rem; border-radius: 9px; }
+
+  /* Hero */
+  .hero-content { padding: 96px 16px 80px; }
+  .hero-logo-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+  .hero-title { font-size: clamp(1.7rem,8vw,2.4rem); }
+  .hero-sub { font-size: .92rem; }
   .hero-buttons { flex-direction: column; width: 100%; }
   .hero-buttons .btn { width: 100%; justify-content: center; }
+  .hero-trust { font-size: .8rem; gap: 7px; }
 
-  .modal-body { padding: 20px 20px 24px; }
-  .modal-header { padding: 20px 20px 16px; }
+  /* Grids */
+  .problems-grid, .solutions-grid { grid-template-columns: 1fr; gap: 12px; }
+  .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Quick actions */
+  .quick-actions-inner { flex-direction: column; align-items: stretch; }
+  .quick-action-btn { justify-content: center; }
+
+  /* Carousel arrows hide on mobile (swipe works) */
+  .carousel-prev, .carousel-next { display: none; }
+
+  /* Steps */
+  .steps-wrapper { grid-template-columns: 1fr; gap: 14px; }
+  .step-card { padding: 24px 18px; }
+
+  /* Pricing */
+  .pricing-card { padding: 28px 20px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Modals */
+  .modal-body { padding: 18px 18px 22px; }
+  .modal-header { padding: 18px 18px 14px; }
+  .modal-roles { grid-template-columns: 1fr; }
+  .modal-pages { grid-template-columns: 1fr; }
+  .modal-card { border-radius: 18px; }
+
+  /* Browser frame */
+  .browser-url { display: none; }
 }
 
-/* ============================================================
-   ANIMATIONS (initial states for GSAP)
-============================================================ */
-.gsap-fade { opacity: 0; transform: translateY(40px); }
-.gsap-left { opacity: 0; transform: translateX(-40px); }
-.gsap-right { opacity: 0; transform: translateX(40px); }
-.gsap-scale { opacity: 0; transform: scale(0.88); }
-
+@media (max-width: 380px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .hero-buttons .btn { font-size: .88rem; padding: 12px 20px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      NAVBAR
-============================================================ -->
-<nav id="navbar">
+══════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="القائمة الرئيسية">
   <div class="nav-inner">
     <div class="nav-logo">
-      <div class="nav-logo-icon"><i class="fa-solid fa-pen-nib"></i></div>
+      <div class="nav-logo-icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></div>
       <span class="nav-logo-text">ClinicPen</span>
     </div>
 
-    <div class="nav-links">
-      <a href="#problems">المشكلة</a>
-      <a href="#features">المميزات</a>
-      <a href="#how-it-works">كيف يعمل</a>
-      <a href="#pricing">الأسعار</a>
-      <a href="#faq">الأسئلة</a>
-      <a href="#" class="nav-cta" onclick="openModal('modal-subscribe'); return false;">ابدأ مجاناً</a>
+    <div class="nav-links" role="menubar">
+      <a href="#problems" role="menuitem">المشكلة</a>
+      <a href="#features" role="menuitem">المميزات</a>
+      <a href="#how-it-works" role="menuitem">كيف يعمل</a>
+      <a href="#pricing" role="menuitem">الأسعار</a>
+      <a href="#faq" role="menuitem">الأسئلة</a>
     </div>
 
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+    <div class="nav-right">
+      <!-- Desktop quick-action links -->
+      <button class="btn-outline" style="padding:7px 14px;border-radius:100px;font-size:.82rem;font-weight:700;border:1.5px solid var(--primary);color:var(--primary);background:transparent;display:none;" id="nav-how-btn" onclick="openModal('modal-how')">
+        <i class="fa-solid fa-play-circle"></i> كيف يعمل
+      </button>
+      <button class="btn-outline" style="padding:7px 14px;border-radius:100px;font-size:.82rem;font-weight:700;border:1.5px solid var(--primary);color:var(--primary);background:transparent;display:none;" id="nav-help-btn" onclick="openModal('modal-help')">
+        <i class="fa-solid fa-circle-question"></i> المساعدة
+      </button>
+      <button class="nav-cta" onclick="openModal('modal-subscribe')">
+        <i class="fa-solid fa-rocket"></i> ابدأ مجاناً
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="قائمة التنقل">
   <div class="mobile-menu-card">
     <div class="mobile-menu-links">
-      <a href="#problems" onclick="closeMobileMenu()">المشكلة</a>
-      <a href="#features" onclick="closeMobileMenu()">المميزات</a>
-      <a href="#how-it-works" onclick="closeMobileMenu()">كيف يعمل</a>
-      <a href="#pricing" onclick="closeMobileMenu()">الأسعار</a>
-      <a href="#faq" onclick="closeMobileMenu()">الأسئلة الشائعة</a>
+      <a href="#problems" onclick="closeMobileMenu()"><i class="fa-solid fa-triangle-exclamation" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>المشكلة</a>
+      <a href="#features" onclick="closeMobileMenu()"><i class="fa-solid fa-star" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>المميزات</a>
+      <a href="#how-it-works" onclick="closeMobileMenu()"><i class="fa-solid fa-list-ol" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>كيف يعمل</a>
+      <a href="#pricing" onclick="closeMobileMenu()"><i class="fa-solid fa-tag" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>الأسعار</a>
+      <a href="#faq" onclick="closeMobileMenu()"><i class="fa-solid fa-circle-question" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>الأسئلة</a>
+      <hr>
+      <!-- Quick actions in mobile menu -->
+      <a href="#" onclick="openModal('modal-how');closeMobileMenu();return false;"><i class="fa-solid fa-play-circle" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>كيف يعمل ClinicPen</a>
+      <a href="#" onclick="openModal('modal-help');closeMobileMenu();return false;"><i class="fa-solid fa-headset" style="color:var(--primary);margin-left:8px;font-size:.85rem;"></i>مركز المساعدة</a>
     </div>
     <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="openModal('modal-subscribe');closeMobileMenu();">
       <i class="fa-solid fa-rocket"></i> ابدأ تجربتك المجانية
@@ -1809,232 +1118,192 @@ footer {
   </div>
 </div>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      HERO
-============================================================ -->
-<section id="hero">
+══════════════════════════════════════════ -->
+<section id="hero" aria-label="القسم الرئيسي">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-particles" id="hero-particles"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
 
   <div class="hero-content">
-    <div class="hero-logo-icon gsap-scale">
+    <div class="hero-logo-icon" aria-hidden="true">
       <i class="fa-solid fa-pen-nib"></i>
     </div>
-    <div class="hero-badge gsap-fade">
-      <i class="fa-solid fa-circle-check"></i>
+    <div class="hero-badge" role="note">
+      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
       نظام إدارة عيادات متكامل — صُنع للعراق
     </div>
-    <h1 class="hero-title gsap-fade">
+    <h1 class="hero-title">
       سجّل كل شيء،<br><span>لا تنسَ شيئاً</span>
     </h1>
-    <p class="hero-sub gsap-fade">
+    <p class="hero-sub">
       نظام إدارة عيادات متكامل مصمم للعيادات الصغيرة والمتوسطة في العراق.<br>
       أدِر حجوزاتك، تابع مرضاك، واعرف أرباحك — من هاتفك أو كمبيوترك بدون تنصيب.
     </p>
-    <div class="hero-buttons gsap-fade">
-      <button class="btn btn-primary" onclick="openModal('modal-subscribe')">
-        <i class="fa-solid fa-rocket"></i> ابدأ تجربتك المجانية
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="openModal('modal-subscribe')" aria-label="ابدأ تجربتك المجانية">
+        <i class="fa-solid fa-rocket" aria-hidden="true"></i> ابدأ تجربتك المجانية
       </button>
-      <button class="btn btn-secondary" onclick="openModal('modal-how')">
-        <i class="fa-solid fa-play"></i> شاهد كيف يعمل
+      <button class="btn btn-secondary" onclick="openModal('modal-how')" aria-label="شاهد كيف يعمل">
+        <i class="fa-solid fa-play" aria-hidden="true"></i> شاهد كيف يعمل
       </button>
     </div>
-    <div class="hero-trust gsap-fade">
-      <span class="trust-item"><i class="fa-solid fa-check"></i> أسبوعان مجاناً</span>
-      <span class="trust-sep">←</span>
-      <span class="trust-item"><i class="fa-solid fa-check"></i> لا بطاقة ائتمان</span>
-      <span class="trust-sep">←</span>
-      <span class="trust-item"><i class="fa-solid fa-check"></i> إلغاء في أي وقت</span>
+    <div class="hero-trust" role="list">
+      <span class="trust-item" role="listitem"><i class="fa-solid fa-check" aria-hidden="true"></i> أسبوعان مجاناً</span>
+      <span class="trust-sep" aria-hidden="true">←</span>
+      <span class="trust-item" role="listitem"><i class="fa-solid fa-check" aria-hidden="true"></i> لا بطاقة ائتمان</span>
+      <span class="trust-sep" aria-hidden="true">←</span>
+      <span class="trust-item" role="listitem"><i class="fa-solid fa-check" aria-hidden="true"></i> إلغاء في أي وقت</span>
     </div>
   </div>
 
-  <div class="scroll-arrow" onclick="document.getElementById('problems').scrollIntoView({behavior:'smooth'})">
-    <i class="fa-solid fa-chevron-down"></i>
+  <div class="scroll-arrow" onclick="scrollTo('problems')" aria-label="انتقل للأسفل" role="button" tabindex="0">
+    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      PROBLEMS
-============================================================ -->
-<section id="problems">
+══════════════════════════════════════════ -->
+<section id="problems" aria-labelledby="problems-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">التحديات اليومية</span>
-      <h2 class="section-title gsap-fade">هل عيادتك تعاني من هذا؟</h2>
+      <span class="section-label">التحديات اليومية</span>
+      <h2 class="section-title" id="problems-title">هل عيادتك تعاني من هذا؟</h2>
     </div>
 
     <div class="problems-grid">
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-calendar-xmark"></i></div>
-        <div>
-          <h4>ضياع الحجوزات</h4>
-          <p>تداخل المواعيد وفوضى الجدول اليومي تسبب إحراجاً مع المرضى.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-calendar-xmark"></i></div>
+        <div><h4>ضياع الحجوزات</h4><p>تداخل المواعيد وفوضى الجدول اليومي يسبّب إحراجاً مع المرضى.</p></div>
       </div>
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-book-open"></i></div>
-        <div>
-          <h4>فوضى الحسابات اليدوية</h4>
-          <p>دفاتر ورقية ممزقة وأرقام غير دقيقة تعيق قرارات مالية سليمة.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></div>
+        <div><h4>فوضى الحسابات اليدوية</h4><p>دفاتر ورقية ممزقة وأرقام غير دقيقة تعيق قرارات مالية سليمة.</p></div>
       </div>
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
-        <div>
-          <h4>ديون مرضى منسية</h4>
-          <p>مبالغ غير مسددة تضيع بين السجلات دون متابعة أو تذكير.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <div><h4>ديون مرضى منسية</h4><p>مبالغ غير مسددة تضيع بين السجلات دون متابعة أو تذكير.</p></div>
       </div>
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-chart-pie"></i></div>
-        <div>
-          <h4>عدم معرفة الأرباح</h4>
-          <p>لا تعرف صافي ربحك الحقيقي في نهاية الشهر بدقة وثقة.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i></div>
+        <div><h4>عدم معرفة الأرباح</h4><p>لا تعرف صافي ربحك الحقيقي في نهاية الشهر بدقة وثقة.</p></div>
       </div>
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-folder-open"></i></div>
-        <div>
-          <h4>صعوبة متابعة السجلات</h4>
-          <p>إيجاد ملف مريض قديم أو تاريخ زياراته يستغرق وقتاً طويلاً.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-folder-open"></i></div>
+        <div><h4>صعوبة متابعة السجلات</h4><p>إيجاد ملف مريض قديم أو تاريخ زياراته يستغرق وقتاً طويلاً.</p></div>
       </div>
-      <div class="problem-card gsap-fade">
-        <div class="problem-icon"><i class="fa-solid fa-chart-bar"></i></div>
-        <div>
-          <h4>غياب التقارير</h4>
-          <p>لا إحصائيات واضحة لأداء العيادة أو مصادر المرضى الرئيسية.</p>
-        </div>
+      <div class="problem-card">
+        <div class="problem-icon" aria-hidden="true"><i class="fa-solid fa-chart-bar"></i></div>
+        <div><h4>غياب التقارير</h4><p>لا إحصائيات واضحة لأداء العيادة أو مصادر المرضى الرئيسية.</p></div>
       </div>
     </div>
 
-    <div class="problems-divider gsap-scale">
+    <div class="problems-divider">
       <div class="divider-badge">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
         ClinicPen يحل كل هذا
-        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
       </div>
     </div>
 
     <div class="solutions-grid">
-      <div class="solution-card gsap-fade">
-        <div class="solution-icon"><i class="fa-solid fa-calendar-check"></i></div>
-        <div>
-          <h4>جدول حجوزات منظم</h4>
-          <p>كشف تلقائي لتعارض المواعيد وإرسال تذكير واتساب مباشر.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-calendar-check"></i></div>
+        <div><h4>جدول حجوزات منظم</h4><p>كشف تلقائي لتعارض المواعيد وتذكير واتساب مباشر للمريض.</p></div>
       </div>
-      <div class="solution-card gsap-fade">
-        <div class="problem-icon" style="background:#d1fae5;color:#059669;"><i class="fa-solid fa-calculator"></i></div>
-        <div>
-          <h4>محاسبة رقمية دقيقة</h4>
-          <p>كل دينار محسوب تلقائياً — إيرادات، مصروفات، صافي ربح.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-calculator"></i></div>
+        <div><h4>محاسبة رقمية دقيقة</h4><p>كل دينار محسوب تلقائياً — إيرادات ومصروفات وصافي ربح.</p></div>
       </div>
-      <div class="solution-card gsap-fade">
-        <div class="solution-icon"><i class="fa-solid fa-bell"></i></div>
-        <div>
-          <h4>متابعة الديون تلقائياً</h4>
-          <p>كل دين موثق مع اسم المريض وتاريخه والمبلغ المتبقي.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-bell"></i></div>
+        <div><h4>متابعة الديون تلقائياً</h4><p>كل دين موثق مع اسم المريض وتاريخه والمبلغ المتبقي.</p></div>
       </div>
-      <div class="solution-card gsap-fade">
-        <div class="solution-icon"><i class="fa-solid fa-trending-up"></i></div>
-        <div>
-          <h4>رؤية مالية واضحة</h4>
-          <p>تعرف أرباحك الحقيقية لحظة بلحظة من لوحة تحكم واحدة.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div><h4>رؤية مالية واضحة</h4><p>تعرف أرباحك الحقيقية لحظة بلحظة من لوحة تحكم واحدة.</p></div>
       </div>
-      <div class="solution-card gsap-fade">
-        <div class="solution-icon"><i class="fa-solid fa-user-circle"></i></div>
-        <div>
-          <h4>ملف مريض شامل</h4>
-          <p>تاريخ زياراته ووصفاته ومدفوعاته في ثوانٍ.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-user-circle"></i></div>
+        <div><h4>ملف مريض شامل</h4><p>تاريخ زياراته ووصفاته ومدفوعاته في ثوانٍ.</p></div>
       </div>
-      <div class="solution-card gsap-fade">
-        <div class="solution-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <div>
-          <h4>تقارير وإحصائيات فورية</h4>
-          <p>رسوم بيانية تفاعلية لأداء العيادة بنقرة واحدة.</p>
-        </div>
+      <div class="solution-card">
+        <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+        <div><h4>تقارير وإحصائيات فورية</h4><p>رسوم بيانية تفاعلية لأداء العيادة بنقرة واحدة.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      APP PREVIEW
-============================================================ -->
-<section id="app-preview">
+══════════════════════════════════════════ -->
+<section id="app-preview" aria-labelledby="preview-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">معاينة النظام</span>
-      <h2 class="section-title gsap-fade">شاهد ClinicPen في العمل</h2>
-      <p class="section-sub gsap-fade">واجهة نظيفة وسريعة — مصممة لتوفير وقتك لا لإضاعته.</p>
+      <span class="section-label">معاينة النظام</span>
+      <h2 class="section-title" id="preview-title">شاهد ClinicPen في العمل</h2>
+      <p class="section-sub">واجهة نظيفة وسريعة — مصممة لتوفير وقتك لا لإضاعته.</p>
     </div>
-
-    <div class="browser-frame gsap-scale">
+    <div class="browser-frame">
       <div class="browser-bar">
-        <div class="browser-dots">
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
+        <div class="browser-dots" aria-hidden="true">
+          <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
         </div>
-        <div class="browser-url">
-          <i class="fa-solid fa-lock"></i>
+        <div class="browser-url" aria-label="عنوان التطبيق">
+          <i class="fa-solid fa-lock" aria-hidden="true"></i>
           app.clinicpen.iq/dashboard
         </div>
       </div>
       <div class="browser-screen">
-        <i class="fa-solid fa-image"></i>
+        <i class="fa-solid fa-image" aria-hidden="true"></i>
         <span>مكان لقطة الشاشة الرئيسية — سيُستبدل بصورة حقيقية</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      FEATURES
-============================================================ -->
-<section id="features">
+══════════════════════════════════════════ -->
+<section id="features" aria-labelledby="features-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">الميزات</span>
-      <h2 class="section-title gsap-fade">كل ما تحتاجه في مكان واحد</h2>
-      <p class="section-sub gsap-fade">أدوات مدروسة لواقع العيادة اليومي — لا زيادة ولا نقصان.</p>
+      <span class="section-label">الميزات</span>
+      <h2 class="section-title" id="features-title">كل ما تحتاجه في مكان واحد</h2>
+      <p class="section-sub">أدوات مدروسة لواقع العيادة اليومي — لا زيادة ولا نقصان.</p>
     </div>
-
     <div class="features-grid">
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></div>
         <h3>إدارة الحجوزات</h3>
         <p>جدول يومي منظم مع كشف تلقائي لتعارض المواعيد وإرسال تذكير واتساب مباشر للمريض.</p>
       </div>
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-hospital-user"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-hospital-user"></i></div>
         <h3>سجلات المرضى</h3>
         <p>ملف متكامل لكل مريض مع تتبع جميع زياراته وتفاصيل كل جلسة ووصفة طبية.</p>
       </div>
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-coins"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-coins"></i></div>
         <h3>المالية والأرباح</h3>
         <p>حساب تلقائي للأرباح والديون وكشف حساب الأطباء الشهري بدقة تامة.</p>
       </div>
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-chart-column"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-chart-column"></i></div>
         <h3>تحليلات ذكية</h3>
         <p>رسوم بيانية للإيرادات ومصادر المرضى وأداء الأطباء — كل شيء مرئي وواضح.</p>
       </div>
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-users-gear"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-users-gear"></i></div>
         <h3>إدارة الفريق</h3>
         <p>ثلاثة مستويات صلاحيات للمالك والطبيب والسكرتيرة — كل منهم يرى ما يخصه فقط.</p>
       </div>
-      <div class="feature-card gsap-fade">
-        <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div>
         <h3>يعمل على كل الأجهزة</h3>
         <p>من الهاتف للكمبيوتر بدون تنصيب وقابل للتحميل كتطبيق على الشاشة الرئيسية.</p>
       </div>
@@ -2042,115 +1311,110 @@ footer {
   </div>
 </section>
 
-<!-- ============================================================
-     GALLERY
-============================================================ -->
-<section id="gallery">
+<!-- ══════════════════════════════════════════
+     QUICK ACTIONS (below features, replaces side buttons)
+══════════════════════════════════════════ -->
+<section id="quick-actions" aria-label="إجراءات سريعة">
   <div class="container">
-    <div class="section-header">
-      <span class="section-label gsap-fade">جولة في النظام</span>
-      <h2 class="section-title gsap-fade">اكتشف كل صفحة بنفسك</h2>
-      <p class="section-sub gsap-fade">ست صفحات متكاملة — كل واحدة مصممة لمهمة محددة.</p>
-    </div>
-
-    <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-card gsap-fade" data-label="لوحة التحكم" data-desc="نظرة شاملة على عيادتك لحظة بلحظة">
-        <div class="gallery-img"><i class="fa-solid fa-gauge-high"></i></div>
-        <div class="gallery-label">لوحة التحكم</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>لوحة التحكم</h4>
-            <p>نظرة شاملة على عيادتك لحظة بلحظة</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-card gsap-fade" data-label="المرضى" data-desc="ملف كامل لكل مريض وتاريخه الطبي">
-        <div class="gallery-img"><i class="fa-solid fa-user-injured"></i></div>
-        <div class="gallery-label">المرضى</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>المرضى</h4>
-            <p>ملف كامل لكل مريض وتاريخه الطبي</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-card gsap-fade" data-label="الحجوزات" data-desc="جدول يومي منظم مع إشعارات واتساب">
-        <div class="gallery-img"><i class="fa-solid fa-calendar-alt"></i></div>
-        <div class="gallery-label">الحجوزات</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>الحجوزات</h4>
-            <p>جدول يومي منظم مع إشعارات واتساب</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-card gsap-fade" data-label="المالية" data-desc="إيرادات وديون وأرباح بدقة تامة">
-        <div class="gallery-img"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-        <div class="gallery-label">المالية</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>المالية</h4>
-            <p>إيرادات وديون وأرباح بدقة تامة</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-card gsap-fade" data-label="التحليلات" data-desc="رسوم بيانية تفاعلية وإحصائيات ذكية">
-        <div class="gallery-img"><i class="fa-solid fa-chart-area"></i></div>
-        <div class="gallery-label">التحليلات</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>التحليلات</h4>
-            <p>رسوم بيانية تفاعلية وإحصائيات ذكية</p>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-card gsap-fade" data-label="الإعدادات" data-desc="إدارة الفريق والصلاحيات والخدمات">
-        <div class="gallery-img"><i class="fa-solid fa-sliders"></i></div>
-        <div class="gallery-label">الإعدادات</div>
-        <div class="gallery-overlay">
-          <div class="gallery-info">
-            <h4>الإعدادات</h4>
-            <p>إدارة الفريق والصلاحيات والخدمات</p>
-          </div>
-        </div>
-      </div>
+    <p class="quick-actions-title">اكتشف المزيد</p>
+    <div class="quick-actions-inner">
+      <button class="quick-action-btn" onclick="openModal('modal-how')">
+        <i class="fa-solid fa-play-circle"></i> كيف يعمل ClinicPen
+      </button>
+      <button class="quick-action-btn" onclick="openModal('modal-subscribe')">
+        <i class="fa-solid fa-rocket"></i> اشترك الآن — مجاناً
+      </button>
+      <button class="quick-action-btn" onclick="openModal('modal-help')">
+        <i class="fa-solid fa-circle-question"></i> مركز المساعدة
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     HOW IT WORKS
-============================================================ -->
-<section id="how-it-works">
+<!-- ══════════════════════════════════════════
+     SCREENSHOT CAROUSEL (NEW)
+══════════════════════════════════════════ -->
+<section id="carousel-section" aria-labelledby="carousel-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">كيف تبدأ</span>
-      <h2 class="section-title gsap-fade">ثلاث خطوات وعيادتك جاهزة</h2>
-      <p class="section-sub gsap-fade">من التواصل إلى الاستخدام الفعلي — في دقائق.</p>
+      <span class="section-label">لقطات من النظام</span>
+      <h2 class="section-title" id="carousel-title">اكتشف كل صفحة بنفسك</h2>
+     <!---<p class="section-sub">اسحب يميناً أو يساراً لاستعراض صفحات ClinicPen الست.</p>-->
     </div>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="السابق">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+      <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="التالي">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <div class="carousel-track-outer" id="carouselOuter" role="region" aria-label="معرض لقطات الشاشة">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide" role="img" aria-label="لوحة التحكم">
+            <i class="fa-solid fa-gauge-high" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">لوحة التحكم</div>
+          </div>
+          <div class="carousel-slide" role="img" aria-label="المرضى">
+            <i class="fa-solid fa-user-injured" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">المرضى</div>
+          </div>
+          <div class="carousel-slide" role="img" aria-label="الحجوزات">
+            <i class="fa-solid fa-calendar-alt" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">الحجوزات</div>
+          </div>
+          <div class="carousel-slide" role="img" aria-label="المالية">
+            <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">المالية</div>
+          </div>
+          <div class="carousel-slide" role="img" aria-label="التحليلات">
+            <i class="fa-solid fa-chart-area" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">التحليلات</div>
+          </div>
+          <div class="carousel-slide" role="img" aria-label="الإعدادات">
+            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+            <span style="font-size:.95rem;font-weight:700;opacity:.45;">مكان الصورة</span>
+            <div class="carousel-slide-label">الإعدادات</div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="التنقل بين الصور"></div>
+    </div>
+  </div>
+</section>
 
-    <div class="steps-wrapper">
-      <div class="step-card gsap-left">
+<!-- ══════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════ -->
+<section id="how-it-works" aria-labelledby="steps-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">كيف تبدأ</span>
+      <h2 class="section-title" id="steps-title">ثلاث خطوات وعيادتك جاهزة</h2>
+      <p class="section-sub">من التواصل إلى الاستخدام الفعلي — في دقائق.</p>
+    </div>
+    <div class="steps-wrapper" id="steps-wrapper">
+      <div class="step-card" id="step1">
         <div class="step-number">١</div>
-        <div class="step-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="step-icon" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></div>
         <h3>تواصل واشترك</h3>
         <p>تواصل معنا عبر واتساب، وافق على الشروط، وابدأ أسبوعيك المجانيين فوراً بدون أي تعقيد.</p>
       </div>
-      <div class="step-connector gsap-fade">
-        <i class="fa-solid fa-arrow-left"></i>
-      </div>
-      <div class="step-card gsap-fade">
+      <div class="step-connector" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="step-card" id="step2">
         <div class="step-number">٢</div>
-        <div class="step-icon"><i class="fa-solid fa-hospital"></i></div>
+        <div class="step-icon" aria-hidden="true"><i class="fa-solid fa-hospital"></i></div>
         <h3>أعد عيادتك</h3>
         <p>أضف أطباءك وخدماتك وفريق العمل. النظام جاهز للاستخدام الفعلي خلال دقائق.</p>
       </div>
-      <div class="step-connector gsap-fade">
-        <i class="fa-solid fa-arrow-left"></i>
-      </div>
-      <div class="step-card gsap-right">
+      <div class="step-connector" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="step-card" id="step3">
         <div class="step-number">٣</div>
-        <div class="step-icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="step-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
         <h3>ابدأ الإدارة الذكية</h3>
         <p>سجّل مرضاك، تابع حجوزاتك، واعرف أرباحك بدقة من أي جهاز وفي أي وقت.</p>
       </div>
@@ -2158,18 +1422,17 @@ footer {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      PRICING
-============================================================ -->
-<section id="pricing">
+══════════════════════════════════════════ -->
+<section id="pricing" aria-labelledby="pricing-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">الأسعار</span>
-      <h2 class="section-title gsap-fade">سعر واحد شفاف — بلا مفاجآت</h2>
-      <p class="section-sub gsap-fade">كل الميزات في اشتراك واحد بسيط وعادل.</p>
+      <span class="section-label">الأسعار</span>
+      <h2 class="section-title" id="pricing-title">سعر واحد شفاف — بلا مفاجآت</h2>
+      <p class="section-sub">كل الميزات في اشتراك واحد بسيط وعادل.</p>
     </div>
-
-    <div class="pricing-wrapper gsap-scale">
+    <div class="pricing-wrapper">
       <div class="pricing-card">
         <div class="pricing-badge">الخطة الشاملة</div>
         <div class="pricing-price">
@@ -2178,20 +1441,18 @@ footer {
           <span class="period">/ شهر</span>
         </div>
         <div class="pricing-trial">
-          <i class="fa-solid fa-gift"></i>
-          أسبوعان مجاناً عند البدء
+          <i class="fa-solid fa-gift" aria-hidden="true"></i> أسبوعان مجاناً عند البدء
         </div>
-        <ul class="pricing-features">
-          <li><i class="fa-solid fa-check-circle"></i> جميع الميزات بلا استثناء</li>
-          <li><i class="fa-solid fa-check-circle"></i> مرضى وحجوزات غير محدودة</li>
-          <li><i class="fa-solid fa-check-circle"></i> مستخدمون غير محدودين</li>
-          <li><i class="fa-solid fa-check-circle"></i> تحديثات مستمرة مجاناً</li>
-          <li><i class="fa-solid fa-check-circle"></i> دعم فني مباشر عبر واتساب</li>
-          <li><i class="fa-solid fa-check-circle"></i> إعداد وتدريب مجاني</li>
+        <ul class="pricing-features" role="list">
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> جميع الميزات بلا استثناء</li>
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> مرضى وحجوزات غير محدودة</li>
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> مستخدمون غير محدودين</li>
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> تحديثات مستمرة مجاناً</li>
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> دعم فني مباشر عبر واتساب</li>
+          <li role="listitem"><i class="fa-solid fa-check-circle" aria-hidden="true"></i> إعداد وتدريب مجاني</li>
         </ul>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;padding:16px;" onclick="openModal('modal-subscribe')">
-          <i class="fa-solid fa-rocket"></i>
-          ابدأ تجربتك المجانية الآن
+        <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:15px;" onclick="openModal('modal-subscribe')">
+          <i class="fa-solid fa-rocket" aria-hidden="true"></i> ابدأ تجربتك المجانية الآن
         </button>
         <p class="pricing-note">لا بطاقة ائتمان — إلغاء في أي وقت</p>
       </div>
@@ -2199,126 +1460,120 @@ footer {
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      FAQ
-============================================================ -->
-<section id="faq">
+══════════════════════════════════════════ -->
+<section id="faq" aria-labelledby="faq-title">
   <div class="container">
     <div class="section-header">
-      <span class="section-label gsap-fade">الأسئلة الشائعة</span>
-      <h2 class="section-title gsap-fade">كل ما تريد معرفته</h2>
+      <span class="section-label">الأسئلة الشائعة</span>
+      <h2 class="section-title" id="faq-title">كل ما تريد معرفته</h2>
     </div>
-
-    <div class="faq-list">
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>هل البرنامج يعمل على الهاتف؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" role="region">
           <div class="faq-answer-inner">نعم — مصمم بالكامل للهاتف والتابلت والكمبيوتر. يمكنك تحميله كتطبيق على شاشتك الرئيسية مباشرة من المتصفح بدون App Store.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>هل يحتاج تنصيب؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">لا — يعمل مباشرة من المتصفح. افتح الرابط وسجّل دخولك. لا تنصيب ولا تحديثات يدوية. كل شيء تلقائي.</div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">لا — يعمل مباشرة من المتصفح. افتح الرابط وسجّل دخولك. لا تنصيب ولا تحديثات يدوية.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>هل بياناتي آمنة؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" role="region">
           <div class="faq-answer-inner">نعم — محفوظة على خوادم Google Firebase المشفرة. كل عيادة لها قاعدة بيانات مستقلة معزولة تماماً. بياناتك ملكك ويمكنك تصديرها في أي وقت.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>ماذا يحدث بعد التجربة المجانية؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">تختار الاستمرار بـ ٥٠,٠٠٠ دينار شهرياً، أو تحصل على نسخة كاملة من بياناتك وتتوقف بدون أي التزام أو رسوم.</div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">تختار الاستمرار بـ ٥٠,٠٠٠ دينار شهرياً أو تحصل على نسخة كاملة من بياناتك وتتوقف بدون أي التزام.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>كم عدد المستخدمين المسموح بهم؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">غير محدود — أطباء وسكرتيرات وإدارة بأي عدد، كل منهم بصلاحياته الخاصة التي تحددها أنت.</div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">غير محدود — أطباء وسكرتيرات وإدارة بأي عدد، كل منهم بصلاحياته الخاصة.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>هل يمكن إلغاء الاشتراك؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">نعم في أي وقت بدون رسوم إلغاء. نسلمك نسخة كاملة من بياناتك فور الإلغاء خلال ٢٤ ساعة.</div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">نعم في أي وقت بدون رسوم إلغاء. نسلمك نسخة كاملة من بياناتك فور الإلغاء.</div>
         </div>
       </div>
-      <div class="faq-item gsap-fade">
-        <div class="faq-question">
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
           <span>هل يوجد دعم فني؟</span>
-          <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
+          <div class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
         </div>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">نعم — دعم مباشر عبر واتساب مع جلسة تدريب مجانية لفريقك عند البداية. رد خلال ساعات.</div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">نعم — دعم مباشر عبر واتساب مع جلسة تدريب مجانية لفريقك عند البداية.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      FINAL CTA
-============================================================ -->
-<section id="cta-final" style="padding:100px 0;">
+══════════════════════════════════════════ -->
+<section id="cta-final" aria-labelledby="cta-title">
   <div class="container cta-final-content">
-    <div class="gsap-fade">
-      <h2>جاهز تنظم عيادتك اليوم؟</h2>
-      <p>انضم لعيادات تثق بـ ClinicPen لإدارة يومها بذكاء</p>
-    </div>
-    <div class="cta-buttons gsap-fade">
-      <button class="btn btn-primary" style="background:white;color:var(--primary);box-shadow:0 4px 20px rgba(0,0,0,0.15);" onclick="openModal('modal-subscribe')">
-        <i class="fa-solid fa-rocket"></i> ابدأ مجاناً الآن
+    <h2 id="cta-title">جاهز تنظم عيادتك اليوم؟</h2>
+    <p>انضم لعيادات تثق بـ ClinicPen لإدارة يومها بذكاء</p>
+    <div class="cta-buttons">
+      <button class="btn" style="background:white;color:var(--primary);box-shadow:0 4px 18px rgba(0,0,0,.14);" onclick="openModal('modal-subscribe')">
+        <i class="fa-solid fa-rocket" aria-hidden="true"></i> ابدأ مجاناً الآن
       </button>
-      <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" class="btn btn-whatsapp">
-        <i class="fa-brands fa-whatsapp"></i> تواصل معنا عبر واتساب
+      <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> تواصل معنا عبر واتساب
       </a>
     </div>
-    <div class="cta-trust gsap-fade">
-      <span>أسبوعان مجاناً</span>
-      <span class="trust-sep">←</span>
-      <span>كل الميزات</span>
-      <span class="trust-sep">←</span>
+    <div class="cta-trust">
+      <span>أسبوعان مجاناً</span><span class="trust-sep">←</span>
+      <span>كل الميزات</span><span class="trust-sep">←</span>
       <span>دعم فوري</span>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      FOOTER
-============================================================ -->
-<footer>
+══════════════════════════════════════════ -->
+<footer role="contentinfo">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="nav-logo" style="margin-bottom:12px;">
-          <div class="nav-logo-icon"><i class="fa-solid fa-pen-nib"></i></div>
-          <span class="nav-logo-text" style="-webkit-text-fill-color:white;color:white;">ClinicPen</span>
+      <div>
+        <div class="nav-logo" style="margin-bottom:10px;">
+          <div class="nav-logo-icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></div>
+          <span style="font-size:1.2rem;font-weight:900;color:white;">ClinicPen</span>
         </div>
         <p class="footer-tagline">سجّل كل شيء، لا تنسَ شيئاً</p>
         <p class="footer-copy">© 2026 ClinicPen. جميع الحقوق محفوظة.</p>
       </div>
-
       <div class="footer-links">
         <h4>روابط سريعة</h4>
         <ul>
@@ -2329,563 +1584,525 @@ footer {
           <li><a href="#" onclick="openModal('modal-help');return false;">مركز المساعدة</a></li>
         </ul>
       </div>
-
       <div class="footer-social">
         <h4>تابعنا</h4>
         <div class="social-icons">
-          <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" class="social-icon wa">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          <a href="#" class="social-icon ig"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="social-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="social-icon tg"><i class="fa-brands fa-telegram"></i></a>
+          <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener" class="social-icon wa" aria-label="واتساب"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="#" class="social-icon ig" aria-label="انستجرام"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" class="social-icon fb" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" class="social-icon tg" aria-label="تيليغرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
-
-    <div style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.25);">
-      صُنع بـ <i class="fa-solid fa-heart" style="color:#ef4444;"></i> للعيادات العراقية
+    <div style="text-align:center;font-size:.78rem;color:rgba(255,255,255,.22);">
+      صُنع بـ <i class="fa-solid fa-heart" style="color:#ef4444;" aria-hidden="true"></i> للعيادات العراقية
     </div>
   </div>
 </footer>
 
-<!-- ============================================================
-     FLOATING ELEMENTS
-============================================================ -->
-<!-- Scroll to top -->
-<button id="scroll-top" onclick="gsap.to(window,{scrollTo:0,duration:0.8,ease:'power3.inOut'})">
-  <i class="fa-solid fa-arrow-up"></i>
+<!-- ══════════════════════════════════════════
+     SCROLL TO TOP
+══════════════════════════════════════════ -->
+<button id="scroll-top" onclick="gsap.to(window,{scrollTo:0,duration:.75,ease:'power3.inOut'})" aria-label="العودة للأعلى">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
 </button>
 
-<!-- Side action buttons -->
-<div id="side-actions">
-  <button class="side-btn" onclick="openModal('modal-how')">
-    <i class="fa-solid fa-play-circle"></i> كيف يعمل
-  </button>
-  <button class="side-btn" onclick="openModal('modal-subscribe')">
-    <i class="fa-solid fa-rocket"></i> اشترك الآن
-  </button>
-  <button class="side-btn" onclick="openModal('modal-help')">
-    <i class="fa-solid fa-circle-question"></i> المساعدة
-  </button>
-</div>
-
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      MODAL 1 — HOW IT WORKS
-============================================================ -->
-<div class="modal-overlay" id="modal-how">
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-how" role="dialog" aria-modal="true" aria-labelledby="modal-how-title">
   <div class="modal-card wide">
     <div class="modal-header">
-      <span class="modal-title"><i class="fa-solid fa-play-circle" style="color:var(--primary);margin-left:8px;"></i>كيف يعمل ClinicPen</span>
-      <button class="modal-close" onclick="closeModal('modal-how')"><i class="fa-solid fa-xmark"></i></button>
+      <span class="modal-title" id="modal-how-title"><i class="fa-solid fa-play-circle" style="color:var(--primary);margin-left:8px;" aria-hidden="true"></i>كيف يعمل ClinicPen</span>
+      <button class="modal-close" onclick="closeModal('modal-how')" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <div class="modal-body">
-      <p class="modal-intro">ClinicPen نظام إدارة عيادات متكامل مصمم خصيصاً للعيادات الصغيرة والمتوسطة في العراق. يتيح لك إدارة الحجوزات والمرضى والمالية والتحليلات من أي جهاز وفي أي وقت، بواجهة بسيطة لا تحتاج تدريباً طويلاً.</p>
-
-      <p style="font-size:1rem;font-weight:800;color:var(--gray-700);margin-bottom:16px;">أدوار المستخدمين</p>
+      <p class="modal-intro">ClinicPen نظام إدارة عيادات متكامل مصمم خصيصاً للعيادات الصغيرة والمتوسطة في العراق. يتيح إدارة الحجوزات والمرضى والمالية والتحليلات من أي جهاز وفي أي وقت.</p>
+      <p style="font-size:.97rem;font-weight:800;color:var(--gray-700);margin-bottom:14px;">أدوار المستخدمين</p>
       <div class="modal-roles">
         <div class="role-card">
-          <div class="role-icon"><i class="fa-solid fa-crown"></i></div>
+          <div class="role-icon" aria-hidden="true"><i class="fa-solid fa-crown"></i></div>
           <h4>صاحب العيادة</h4>
-          <p>يرى كل شيء — أرباح وتحليلات وإدارة كاملة للنظام</p>
+          <p>يرى كل شيء — أرباح وتحليلات وإدارة كاملة</p>
         </div>
         <div class="role-card">
-          <div class="role-icon"><i class="fa-solid fa-user-doctor"></i></div>
+          <div class="role-icon" aria-hidden="true"><i class="fa-solid fa-user-doctor"></i></div>
           <h4>الطبيب</h4>
-          <p>يرى مرضاه وجدوله وإحصائياته الخاصة فقط</p>
+          <p>يرى مرضاه وجدوله وإحصائياته فقط</p>
         </div>
         <div class="role-card">
-          <div class="role-icon"><i class="fa-solid fa-headset"></i></div>
+          <div class="role-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></div>
           <h4>السكرتيرة</h4>
           <p>تدير الحجوزات والمرضى بدون الوصول للمالية</p>
         </div>
       </div>
-
       <p class="modal-pages-title">صفحات النظام الست</p>
       <div class="modal-pages">
-        <div class="page-item">
-          <i class="fa-solid fa-gauge-high"></i>
-          <div>
-            <h5>لوحة التحكم</h5>
-            <p>نظرة شاملة على أداء العيادة اليوم والشهر</p>
-          </div>
-        </div>
-        <div class="page-item">
-          <i class="fa-solid fa-calendar-days"></i>
-          <div>
-            <h5>الحجوزات</h5>
-            <p>جدول يومي مع إدارة المواعيد وإرسال التذكيرات</p>
-          </div>
-        </div>
-        <div class="page-item">
-          <i class="fa-solid fa-hospital-user"></i>
-          <div>
-            <h5>المرضى</h5>
-            <p>ملف شامل لكل مريض مع كامل تاريخه</p>
-          </div>
-        </div>
-        <div class="page-item">
-          <i class="fa-solid fa-coins"></i>
-          <div>
-            <h5>المالية</h5>
-            <p>إيرادات وديون ومصروفات وكشوفات شهرية</p>
-          </div>
-        </div>
-        <div class="page-item">
-          <i class="fa-solid fa-chart-line"></i>
-          <div>
-            <h5>التحليلات</h5>
-            <p>رسوم بيانية تفاعلية وإحصائيات متقدمة</p>
-          </div>
-        </div>
-        <div class="page-item">
-          <i class="fa-solid fa-sliders"></i>
-          <div>
-            <h5>الإعدادات</h5>
-            <p>إدارة الفريق والخدمات وصلاحيات المستخدمين</p>
-          </div>
-        </div>
+        <div class="page-item"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i><div><h5>لوحة التحكم</h5><p>نظرة شاملة على أداء العيادة اليوم</p></div></div>
+        <div class="page-item"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i><div><h5>الحجوزات</h5><p>جدول يومي مع إدارة المواعيد</p></div></div>
+        <div class="page-item"><i class="fa-solid fa-hospital-user" aria-hidden="true"></i><div><h5>المرضى</h5><p>ملف شامل لكل مريض مع تاريخه</p></div></div>
+        <div class="page-item"><i class="fa-solid fa-coins" aria-hidden="true"></i><div><h5>المالية</h5><p>إيرادات وديون وكشوفات شهرية</p></div></div>
+        <div class="page-item"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><div><h5>التحليلات</h5><p>رسوم بيانية وإحصائيات متقدمة</p></div></div>
+        <div class="page-item"><i class="fa-solid fa-sliders" aria-hidden="true"></i><div><h5>الإعدادات</h5><p>إدارة الفريق والخدمات والصلاحيات</p></div></div>
       </div>
-
       <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeModal('modal-how');openModal('modal-subscribe')">
-        <i class="fa-solid fa-rocket"></i> ابدأ تجربتك المجانية
+        <i class="fa-solid fa-rocket" aria-hidden="true"></i> ابدأ تجربتك المجانية
       </button>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     MODAL 2 — SUBSCRIBE (2 steps)
-============================================================ -->
-<div class="modal-overlay" id="modal-subscribe">
+<!-- ══════════════════════════════════════════
+     MODAL 2 — SUBSCRIBE
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-subscribe" role="dialog" aria-modal="true" aria-labelledby="modal-sub-title">
   <div class="modal-card">
-    <!-- Step 1 -->
     <div id="subscribe-step1">
       <div class="modal-header">
-        <span class="modal-title"><i class="fa-solid fa-file-contract" style="color:var(--primary);margin-left:8px;"></i>شروط الاستخدام — ملخص سريع</span>
-        <button class="modal-close" onclick="closeModal('modal-subscribe')"><i class="fa-solid fa-xmark"></i></button>
+        <span class="modal-title" id="modal-sub-title"><i class="fa-solid fa-file-contract" style="color:var(--primary);margin-left:8px;" aria-hidden="true"></i>شروط الاستخدام — ملخص سريع</span>
+        <button class="modal-close" onclick="closeModal('modal-subscribe')" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       </div>
       <div class="modal-body">
         <ul class="terms-list">
-          <li><i class="fa-solid fa-circle-info"></i> الاشتراك ٥٠,٠٠٠ دينار شهرياً بعد أسبوعين تجريبيين مجانيين.</li>
-          <li><i class="fa-solid fa-circle-info"></i> بياناتك ملكك — يمكن تصديرها كاملةً في أي وقت.</li>
-          <li><i class="fa-solid fa-circle-info"></i> إلغاء الاشتراك مجاني في أي وقت بدون رسوم.</li>
-          <li><i class="fa-solid fa-circle-info"></i> ClinicPen غير مسؤول عن محتوى البيانات المُدخَلة من قِبل العيادة.</li>
-          <li><i class="fa-solid fa-circle-info"></i> في حال انقطاع الاشتراك أكثر من ٢٠ يوماً يجب طلب نسخة احتياطية مسبقاً.</li>
-          <li><i class="fa-solid fa-circle-info"></i> النظام يُقدَّم كما هو دون ضمان الخلو التام من الأعطال التقنية المؤقتة.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> الاشتراك ٥٠,٠٠٠ دينار شهرياً بعد أسبوعين تجريبيين مجانيين.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> بياناتك ملكك — يمكن تصديرها كاملةً في أي وقت.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> إلغاء الاشتراك مجاني في أي وقت بدون رسوم.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> ClinicPen غير مسؤول عن محتوى البيانات المُدخَلة.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> في حال انقطاع الاشتراك أكثر من ٢٠ يوماً يجب طلب نسخة احتياطية مسبقاً.</li>
+          <li><i class="fa-solid fa-circle-info" aria-hidden="true"></i> النظام يُقدَّم كما هو دون ضمان الخلو التام من الأعطال التقنية.</li>
         </ul>
-        <span class="policy-link" onclick="openModal('modal-policy')">
-          <i class="fa-solid fa-external-link"></i> قراءة سياسة الاستخدام الكاملة
+        <span class="policy-link" onclick="openModal('modal-policy')" role="button" tabindex="0">
+          <i class="fa-solid fa-external-link" aria-hidden="true"></i> قراءة سياسة الاستخدام الكاملة
         </span>
-        <div class="checkbox-row">
+        <label class="checkbox-row">
           <input type="checkbox" id="terms-agree" onchange="toggleAgreeBtn()">
           <span>أوافق على شروط الاستخدام</span>
-        </div>
+        </label>
         <button class="btn btn-primary btn-disabled" id="agree-btn" style="width:100%;justify-content:center;" onclick="goToStep2()">
-          <i class="fa-solid fa-check"></i> موافق — أنشئ كود التفعيل
+          <i class="fa-solid fa-check" aria-hidden="true"></i> موافق — أنشئ كود التفعيل
         </button>
       </div>
     </div>
-
-    <!-- Step 2 -->
     <div id="subscribe-step2" style="display:none;">
       <div class="modal-header">
-        <span class="modal-title"><i class="fa-solid fa-key" style="color:var(--success);margin-left:8px;"></i>كود التفعيل جاهز</span>
-        <button class="modal-close" onclick="closeModal('modal-subscribe');resetSubscribe()"><i class="fa-solid fa-xmark"></i></button>
+        <span class="modal-title"><i class="fa-solid fa-key" style="color:var(--success);margin-left:8px;" aria-hidden="true"></i>كود التفعيل جاهز</span>
+        <button class="modal-close" onclick="closeModal('modal-subscribe');resetSubscribe()" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       </div>
       <div class="modal-body" style="text-align:center;">
-        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-        <h3 style="font-size:1.2rem;font-weight:800;color:var(--gray-800);margin-bottom:8px;">تم إنشاء كود الموافقة بنجاح</h3>
-        <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:4px;">احفظ هذا الكود وأرسله لنا عبر واتساب</p>
-
-        <div class="code-box" id="code-display">
-          <button class="copy-btn" onclick="copyCode()"><i class="fa-solid fa-copy"></i> نسخ</button>
+        <div class="success-icon" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
+        <h3 style="font-size:1.15rem;font-weight:800;color:var(--gray-800);margin-bottom:7px;">تم إنشاء كود الموافقة بنجاح</h3>
+        <p style="font-size:.87rem;color:var(--gray-500);margin-bottom:4px;">احفظ هذا الكود وأرسله لنا عبر واتساب</p>
+        <div class="code-box" role="region" aria-label="كود التفعيل">
+          <button class="copy-btn" onclick="copyCode()" aria-label="نسخ الكود"><i class="fa-solid fa-copy" aria-hidden="true"></i> نسخ</button>
           <span id="code-text">جاري الإنشاء...</span>
         </div>
-
-        <p class="code-instructions">
-          أرسل هذا الكود لنا عبر واتساب<br>لنُفعّل حسابك خلال ساعات
-        </p>
-
-        <a id="wa-link" href="#" target="_blank" class="btn btn-whatsapp" style="width:100%;justify-content:center;font-size:1rem;">
-          <i class="fa-brands fa-whatsapp"></i> أرسل الكود عبر واتساب
+        <p class="code-instructions">أرسل هذا الكود لنا عبر واتساب<br>لنُفعّل حسابك خلال ساعات</p>
+        <a id="wa-link" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;justify-content:center;font-size:.97rem;">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> أرسل الكود عبر واتساب
         </a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      MODAL 3 — POLICY
-============================================================ -->
-<div class="modal-overlay" id="modal-policy">
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-policy" role="dialog" aria-modal="true" aria-labelledby="modal-policy-title">
   <div class="modal-card wide">
     <div class="modal-header">
-      <span class="modal-title"><i class="fa-solid fa-scale-balanced" style="color:var(--primary);margin-left:8px;"></i>سياسة الاستخدام الكاملة</span>
-      <button class="modal-close" onclick="closeModal('modal-policy')"><i class="fa-solid fa-xmark"></i></button>
+      <span class="modal-title" id="modal-policy-title"><i class="fa-solid fa-scale-balanced" style="color:var(--primary);margin-left:8px;" aria-hidden="true"></i>سياسة الاستخدام الكاملة</span>
+      <button class="modal-close" onclick="closeModal('modal-policy')" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <div class="modal-body">
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ١. تعريف الخدمة</h4>
-        <p>ClinicPen نظام إدارة عيادات يُقدَّم كخدمة برمجية للعيادات الطبية في العراق. يوفر أدوات لإدارة الحجوزات والمرضى والمالية والتحليلات عبر المتصفح بدون تنصيب.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٢. الاشتراك والدفع</h4>
-        <p>٥٠,٠٠٠ دينار شهرياً بعد أسبوعين تجريبيين مجانيين. الدفع شهري بالاتفاق المباشر مع مزود الخدمة عبر واتساب.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٣. ملكية البيانات</h4>
-        <p>جميع البيانات المُدخَلة ملك حصري للعيادة. لا يحق لـ ClinicPen الاطلاع عليها أو استخدامها. يمكن للعيادة تصديرها كاملةً في أي وقت عبر أدوات التصدير المدمجة.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٤. أمان البيانات</h4>
-        <p>البيانات محفوظة على خوادم Google Firebase المشفرة. كل عيادة لها قاعدة بيانات مستقلة معزولة تماماً عن بيانات العيادات الأخرى. تتحمل العيادة مسؤولية حماية بيانات تسجيل الدخول الخاصة بها.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٥. استمرارية الخدمة</h4>
-        <p>في حال انقطاع الاشتراك أكثر من ٢٠ يوماً دون تواصل، يجب طلب نسخة احتياطية مسبقاً. لا يتحمل ClinicPen مسؤولية البيانات الناتجة عن انقطاع الاشتراك دون إشعار مسبق.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٦. إلغاء الاشتراك</h4>
-        <p>يحق للعيادة الإلغاء في أي وقت بدون رسوم. تحصل على نسخة كاملة من بياناتها خلال ٤٨ ساعة من طلب الإلغاء.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٧. حدود المسؤولية</h4>
-        <p>يُقدَّم النظام كما هو. لا يضمن ClinicPen الخلو التام من الأعطال التقنية المؤقتة. لا يتحمل ClinicPen مسؤولية دقة البيانات المُدخَلة من قِبل العيادة.</p>
-      </div>
-      <div class="policy-section">
-        <h4><i class="fa-solid fa-circle-dot"></i> ٨. التحديثات والتواصل</h4>
-        <p>يحق لـ ClinicPen تحديث هذه السياسة مع إشعار مسبق للعيادات المشتركة. للتواصل والدعم الفني: عبر واتساب مع الرد خلال ٢٤ ساعة كحد أقصى.</p>
-      </div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ١. تعريف الخدمة</h4><p>ClinicPen نظام إدارة عيادات يُقدَّم كخدمة برمجية للعيادات الطبية في العراق. يوفر أدوات لإدارة الحجوزات والمرضى والمالية والتحليلات عبر المتصفح بدون تنصيب.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٢. الاشتراك والدفع</h4><p>٥٠,٠٠٠ دينار شهرياً بعد أسبوعين تجريبيين مجانيين. الدفع شهري بالاتفاق المباشر مع مزود الخدمة عبر واتساب.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٣. ملكية البيانات</h4><p>جميع البيانات المُدخَلة ملك حصري للعيادة. لا يحق لـ ClinicPen الاطلاع عليها أو استخدامها. يمكن للعيادة تصديرها كاملةً في أي وقت.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٤. أمان البيانات</h4><p>البيانات محفوظة على خوادم Google Firebase المشفرة. كل عيادة لها قاعدة بيانات مستقلة معزولة تماماً. تتحمل العيادة مسؤولية حماية بيانات تسجيل الدخول.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٥. استمرارية الخدمة</h4><p>في حال انقطاع الاشتراك أكثر من ٢٠ يوماً دون تواصل، يجب طلب نسخة احتياطية مسبقاً. لا يتحمل ClinicPen مسؤولية البيانات الناتجة عن انقطاع الاشتراك.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٦. إلغاء الاشتراك</h4><p>يحق للعيادة الإلغاء في أي وقت بدون رسوم. تحصل على نسخة كاملة من بياناتها خلال ٤٨ ساعة.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٧. حدود المسؤولية</h4><p>يُقدَّم النظام كما هو. لا يضمن ClinicPen الخلو التام من الأعطال التقنية المؤقتة. لا يتحمل ClinicPen مسؤولية دقة البيانات المُدخَلة.</p></div>
+      <div class="policy-section"><h4><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> ٨. التحديثات والتواصل</h4><p>يحق لـ ClinicPen تحديث هذه السياسة مع إشعار مسبق. للتواصل والدعم: عبر واتساب مع الرد خلال ٢٤ ساعة.</p></div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      MODAL 4 — HELP
-============================================================ -->
-<div class="modal-overlay" id="modal-help">
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-help" role="dialog" aria-modal="true" aria-labelledby="modal-help-title">
   <div class="modal-card wide">
     <div class="modal-header">
-      <span class="modal-title"><i class="fa-solid fa-circle-question" style="color:var(--primary);margin-left:8px;"></i>مركز المساعدة</span>
-      <button class="modal-close" onclick="closeModal('modal-help')"><i class="fa-solid fa-xmark"></i></button>
+      <span class="modal-title" id="modal-help-title"><i class="fa-solid fa-circle-question" style="color:var(--primary);margin-left:8px;" aria-hidden="true"></i>مركز المساعدة</span>
+      <button class="modal-close" onclick="closeModal('modal-help')" aria-label="إغلاق"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
     <div class="modal-body">
-      <div class="help-tabs">
-        <button class="help-tab active" onclick="switchTab(this,'tab1')">تحميل كتطبيق</button>
-        <button class="help-tab" onclick="switchTab(this,'tab2')">كيف تبدأ</button>
-        <button class="help-tab" onclick="switchTab(this,'tab3')">إدارة المستخدمين</button>
-        <button class="help-tab" onclick="switchTab(this,'tab4')">تصدير البيانات</button>
+      <div class="help-tabs" role="tablist">
+        <button class="help-tab active" onclick="switchTab(this,'tab1')" role="tab" aria-selected="true">تحميل كتطبيق</button>
+        <button class="help-tab" onclick="switchTab(this,'tab2')" role="tab" aria-selected="false">كيف تبدأ</button>
+        <button class="help-tab" onclick="switchTab(this,'tab3')" role="tab" aria-selected="false">إدارة المستخدمين</button>
+        <button class="help-tab" onclick="switchTab(this,'tab4')" role="tab" aria-selected="false">تصدير البيانات</button>
       </div>
-
-      <div class="help-panel active" id="tab1">
+      <div class="help-panel active" id="tab1" role="tabpanel">
         <div class="help-steps">
-          <div class="help-step">
-            <div class="help-step-num">١</div>
-            <p>افتح رابط البرنامج في متصفح Chrome على هاتفك</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٢</div>
-            <p>اضغط على ثلاث نقاط في أعلى المتصفح (القائمة)</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٣</div>
-            <p>اختر "إضافة إلى الشاشة الرئيسية"</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٤</div>
-            <p>اضغط "إضافة" — التطبيق جاهز على شاشتك الرئيسية فوراً</p>
-          </div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">١</div><p>افتح رابط البرنامج في متصفح Chrome على هاتفك</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٢</div><p>اضغط على ثلاث نقاط في أعلى المتصفح (القائمة)</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٣</div><p>اختر "إضافة إلى الشاشة الرئيسية"</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٤</div><p>اضغط "إضافة" — التطبيق جاهز على شاشتك فوراً</p></div>
         </div>
       </div>
-
-      <div class="help-panel" id="tab2">
+      <div class="help-panel" id="tab2" role="tabpanel">
         <div class="help-steps">
-          <div class="help-step">
-            <div class="help-step-num">١</div>
-            <p>تواصل معنا عبر واتساب وأرسل كود الموافقة الذي حصلت عليه</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٢</div>
-            <p>نرسل لك رابط عيادتك الخاص وبيانات الدخول خلال ساعات</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٣</div>
-            <p>أضف أطباءك وخدماتك من صفحة الإعدادات</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٤</div>
-            <p>أضف حسابات فريقك وابدأ استخدام النظام فوراً</p>
-          </div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">١</div><p>تواصل معنا عبر واتساب وأرسل كود الموافقة</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٢</div><p>نرسل رابط عيادتك الخاص وبيانات الدخول خلال ساعات</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٣</div><p>أضف أطباءك وخدماتك من صفحة الإعدادات</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٤</div><p>أضف حسابات فريقك وابدأ استخدام النظام فوراً</p></div>
         </div>
       </div>
-
-      <div class="help-panel" id="tab3">
+      <div class="help-panel" id="tab3" role="tabpanel">
         <div class="help-steps">
-          <div class="help-step">
-            <div class="help-step-num">١</div>
-            <p>اذهب لصفحة الإعدادات ثم اختر تبويب المستخدمون</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٢</div>
-            <p>اضغط على زر "إضافة مستخدم جديد"</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٣</div>
-            <p>أدخل الاسم والإيميل وكلمة المرور ودور المستخدم (طبيب / سكرتيرة / مالك)</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٤</div>
-            <p>البرنامج ينشئ الحساب تلقائياً بالصلاحيات المناسبة لدوره</p>
-          </div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">١</div><p>اذهب لصفحة الإعدادات ثم اختر تبويب المستخدمون</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٢</div><p>اضغط على زر "إضافة مستخدم جديد"</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٣</div><p>أدخل الاسم والإيميل وكلمة المرور ودور المستخدم</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٤</div><p>البرنامج ينشئ الحساب تلقائياً بالصلاحيات المناسبة</p></div>
         </div>
       </div>
-
-      <div class="help-panel" id="tab4">
+      <div class="help-panel" id="tab4" role="tabpanel">
         <div class="help-steps">
-          <div class="help-step">
-            <div class="help-step-num">١</div>
-            <p>اذهب لأي صفحة — مرضى أو حجوزات أو مالية</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٢</div>
-            <p>طبّق الفلاتر التي تريدها اختيارياً (فترة زمنية، طبيب، حالة...)</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٣</div>
-            <p>اضغط زر "تصدير" في أعلى الصفحة</p>
-          </div>
-          <div class="help-step">
-            <div class="help-step-num">٤</div>
-            <p>يُحمَّل ملف CSV يفتح مباشرة في Excel أو Google Sheets</p>
-          </div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">١</div><p>اذهب لأي صفحة — مرضى أو حجوزات أو مالية</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٢</div><p>طبّق الفلاتر التي تريدها اختيارياً</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٣</div><p>اضغط زر "تصدير" في أعلى الصفحة</p></div>
+          <div class="help-step"><div class="help-step-num" aria-hidden="true">٤</div><p>يُحمَّل ملف CSV يفتح مباشرة في Excel</p></div>
         </div>
       </div>
-
-      <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-100);">
-        <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" class="btn btn-whatsapp" style="width:100%;justify-content:center;">
-          <i class="fa-brands fa-whatsapp"></i>
-          لم تجد إجابتك؟ تواصل مع الدعم الفني عبر واتساب
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--gray-100);">
+        <a href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;justify-content:center;">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> لم تجد إجابتك؟ تواصل مع الدعم الفني
         </a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
+<!-- ══════════════════════════════════════════
      JAVASCRIPT
-============================================================ -->
+══════════════════════════════════════════ -->
 <script>
-// ============================================================
-// GSAP SETUP
-// ============================================================
+'use strict';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// ============================================================
-// PARTICLES
-// ============================================================
-(function createParticles() {
-  const container = document.getElementById('hero-particles');
-  const colors = ['rgba(129,140,248,0.4)', 'rgba(56,189,248,0.4)', 'rgba(167,139,250,0.3)', 'rgba(14,165,233,0.3)'];
-  for (let i = 0; i < 22; i++) {
+/* ── Prevent flash: ensure all content is visible before GSAP ── */
+document.documentElement.style.visibility = 'visible';
+
+/* ══════════════════════
+   PARTICLES
+══════════════════════ */
+(function() {
+  const c = document.getElementById('hero-particles');
+  const colors = ['rgba(129,140,248,.35)','rgba(88,101,242,.3)','rgba(0,0,128,.25)','rgba(167,139,250,.25)'];
+  for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 6 + 2;
-    p.style.cssText = `
-      width:${size}px; height:${size}px;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      left:${Math.random()*100}%;
-      top:${Math.random()*100}%;
-    `;
-    container.appendChild(p);
+    const s = Math.random() * 5 + 2;
+    Object.assign(p.style, {
+      width: s+'px', height: s+'px',
+      background: colors[i % colors.length],
+      left: Math.random()*100+'%',
+      top: Math.random()*100+'%'
+    });
+    c.appendChild(p);
     gsap.to(p, {
-      opacity: Math.random() * 0.6 + 0.1,
-      y: -(Math.random() * 120 + 40),
-      x: (Math.random() - 0.5) * 80,
-      duration: Math.random() * 6 + 5,
-      repeat: -1,
-      yoyo: true,
-      delay: Math.random() * 4,
+      opacity: Math.random()*.5+.1,
+      y: -(Math.random()*100+30),
+      x: (Math.random()-.5)*60,
+      duration: Math.random()*7+5,
+      repeat: -1, yoyo: true,
+      delay: Math.random()*5,
       ease: 'sine.inOut'
     });
   }
 })();
 
-// ============================================================
-// HERO ANIMATIONS
-// ============================================================
-const heroTl = gsap.timeline({ delay: 0.2 });
+/* ══════════════════════
+   HERO ANIMATION (immediate, no scroll dependency)
+══════════════════════ */
+gsap.timeline({ delay: .1 })
+  .from('.hero-logo-icon', { scale:.6, opacity:0, duration:.6, ease:'back.out(1.7)' })
+  .from('.hero-badge',     { y:16, opacity:0, duration:.5, ease:'power3.out' }, '-=.2')
+  .from('.hero-title',     { y:24, opacity:0, duration:.6, ease:'power3.out' }, '-=.3')
+  .from('.hero-sub',       { y:20, opacity:0, duration:.5, ease:'power3.out' }, '-=.3')
+  .from('.hero-buttons',   { y:16, opacity:0, duration:.5, ease:'power3.out' }, '-=.3')
+  .from('.hero-trust',     { y:12, opacity:0, duration:.4, ease:'power3.out' }, '-=.25');
 
-heroTl
-  .to('.hero-logo-icon', { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(1.7)' })
-  .to('.hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-  .to('.hero-title', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-  .to('.hero-sub', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-  .to('.hero-buttons', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-  .to('.hero-trust', { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.3');
+gsap.to('.scroll-arrow', { y:6, duration:1.1, repeat:-1, yoyo:true, ease:'sine.inOut' });
 
-// Scroll arrow pulse
-gsap.to('.scroll-arrow', { y: 6, duration: 1.2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-// ============================================================
-// SCROLL ANIMATIONS — Generic
-// ============================================================
-function animateOnScroll(selector, vars = {}) {
+/* ══════════════════════
+   SCROLL ANIMATIONS — Fast, no white-flash
+   Key: start:"top 95%" so elements animate
+   before they even enter view fully
+══════════════════════ */
+function revealBatch(selector, fromVars, stagger = .07) {
   const els = document.querySelectorAll(selector);
-  els.forEach((el, i) => {
-    const defaults = {
-      opacity: 1, y: 0, x: 0, scale: 1,
-      duration: 0.7,
-      delay: i * 0.08,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%',
-        toggleActions: 'play none none none'
-      }
-    };
-    gsap.to(el, { ...defaults, ...vars });
+  if (!els.length) return;
+  ScrollTrigger.batch(els, {
+    start: 'top 95%',
+    onEnter: batch => {
+      gsap.from(batch, {
+        ...fromVars,
+        stagger,
+        ease: 'power3.out',
+        duration: fromVars.duration || .55,
+        clearProps: 'all'
+      });
+    },
+    once: true
   });
 }
 
-animateOnScroll('.gsap-fade');
-animateOnScroll('.gsap-left');
-animateOnScroll('.gsap-right');
-animateOnScroll('.gsap-scale');
+revealBatch('.section-label',   { y:14, opacity:0, duration:.4 }, .05);
+revealBatch('.section-title',   { y:20, opacity:0, duration:.5 }, .05);
+revealBatch('.section-sub',     { y:14, opacity:0, duration:.45 }, .05);
+revealBatch('.problem-card',    { y:24, opacity:0, duration:.45 }, .06);
+revealBatch('.solution-card',   { y:24, opacity:0, duration:.45 }, .06);
+revealBatch('.feature-card',    { y:28, opacity:0, duration:.48 }, .07);
+revealBatch('.gallery-card',    { y:20, opacity:0, scale:.97, duration:.45 }, .06);
+revealBatch('.quick-action-btn',{ y:16, opacity:0, duration:.4 }, .07);
+revealBatch('.faq-item',        { y:16, opacity:0, duration:.4 }, .06);
+revealBatch('.pricing-card',    { y:28, opacity:0, scale:.97, duration:.55 }, 0);
+revealBatch('.divider-badge',   { scale:.85, opacity:0, duration:.5 }, 0);
+revealBatch('.step-card',       { y:28, opacity:0, duration:.5 }, .1);
+revealBatch('.browser-frame',   { y:32, opacity:0, duration:.6 }, 0);
+revealBatch('.cta-final-content h2', { y:24, opacity:0, duration:.6 }, 0);
+revealBatch('.cta-final-content p',  { y:16, opacity:0, duration:.5 }, 0);
+revealBatch('.cta-buttons',          { y:16, opacity:0, duration:.5 }, 0);
 
-// ============================================================
-// NAVBAR SCROLL
-// ============================================================
+/* ══════════════════════
+   NAVBAR
+══════════════════════ */
 const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scroll-top');
+
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  const y = window.scrollY;
+  navbar.classList.toggle('scrolled', y > 40);
+  scrollTopBtn.classList.toggle('visible', y > 280);
+}, { passive: true });
 
-  const scrollTop = document.getElementById('scroll-top');
-  scrollTop.classList.toggle('visible', window.scrollY > 300);
-});
+/* Show desktop quick-action buttons after scroll */
+const navHowBtn = document.getElementById('nav-how-btn');
+const navHelpBtn = document.getElementById('nav-help-btn');
+const showNavExtras = () => {
+  if (window.innerWidth > 960) {
+    navHowBtn.style.display = 'flex';
+    navHelpBtn.style.display = 'flex';
+  }
+};
+window.addEventListener('scroll', showNavExtras, { once: true, passive: true });
 
-// ============================================================
-// MOBILE MENU
-// ============================================================
+/* ══════════════════════
+   MOBILE MENU
+══════════════════════ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
+  const open = hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
 });
-
-mobileMenu.addEventListener('click', (e) => {
-  if (e.target === mobileMenu) closeMobileMenu();
-});
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) closeMobileMenu(); });
 
 function closeMobileMenu() {
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
 }
 
-// ============================================================
-// GALLERY AUTO-HIGHLIGHT
-// ============================================================
+/* ══════════════════════
+   SMOOTH SCROLL
+══════════════════════ */
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) gsap.to(window, { scrollTo: { y: el, offsetY: 80 }, duration: .8, ease: 'power3.inOut' });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').replace('#','');
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (el) { e.preventDefault(); scrollTo(id); closeMobileMenu(); }
+  });
+});
+
+/* ══════════════════════
+   GALLERY AUTO-HIGHLIGHT
+══════════════════════ */
 const galleryCards = document.querySelectorAll('.gallery-card');
-let galleryIndex = 0;
-
-function highlightGallery() {
+let gi = 0;
+const highlightGallery = () => {
   galleryCards.forEach(c => c.classList.remove('active'));
-  if (galleryCards[galleryIndex]) galleryCards[galleryIndex].classList.add('active');
-  galleryIndex = (galleryIndex + 1) % galleryCards.length;
-}
+  if (galleryCards[gi]) galleryCards[gi].classList.add('active');
+  gi = (gi + 1) % galleryCards.length;
+};
 highlightGallery();
-setInterval(highlightGallery, 2000);
+setInterval(highlightGallery, 2200);
 
-// ============================================================
-// FAQ ACCORDION
-// ============================================================
+/* ══════════════════════
+   CAROUSEL (New Section)
+══════════════════════ */
+(function() {
+  const track  = document.getElementById('carouselTrack');
+  const outer  = document.getElementById('carouselOuter');
+  const dotsEl = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const total  = slides.length;
+  let cur = 0, autoTimer, isDragging = false, startX = 0, dragDelta = 0;
+
+  /* Build dots */
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'الانتقال للصورة ' + (i+1));
+    d.setAttribute('role', 'tab');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function updateDots() {
+    dotsEl.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === cur));
+  }
+
+  function goTo(idx, animate = true) {
+    cur = (idx + total) % total;
+    track.style.transition = animate ? 'transform .52s cubic-bezier(.4,0,.2,1)' : 'none';
+    track.style.transform = `translateX(${cur * 100}%)`;  /* RTL: positive = go right */
+    updateDots();
+  }
+
+  /* RTL: next = positive direction */
+  prevBtn.addEventListener('click', () => { resetAuto(); goTo(cur - 1); });
+  nextBtn.addEventListener('click', () => { resetAuto(); goTo(cur + 1); });
+
+  /* Auto play */
+  function startAuto() { autoTimer = setInterval(() => goTo(cur + 1), 3000); }
+  function resetAuto()  { clearInterval(autoTimer); startAuto(); }
+  startAuto();
+
+  /* Touch / drag */
+  outer.addEventListener('pointerdown', e => {
+    isDragging = true; startX = e.clientX; dragDelta = 0;
+    track.style.transition = 'none';
+    outer.setPointerCapture(e.pointerId);
+    resetAuto();
+  });
+  outer.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    dragDelta = e.clientX - startX;
+    track.style.transform = `translateX(calc(${cur * 100}% + ${dragDelta}px))`;
+  });
+  outer.addEventListener('pointerup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    if (Math.abs(dragDelta) > 50) {
+      goTo(dragDelta < 0 ? cur + 1 : cur - 1); /* LTR drag logic — left = next */
+    } else {
+      goTo(cur); /* snap back */
+    }
+    startAuto();
+  });
+  outer.addEventListener('pointercancel', () => { isDragging = false; goTo(cur); });
+
+  /* Pause on hover */
+  outer.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  outer.addEventListener('mouseleave', startAuto);
+})();
+
+/* ══════════════════════
+   FAQ
+══════════════════════ */
 document.querySelectorAll('.faq-question').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
     const isOpen = item.classList.contains('open');
-
     document.querySelectorAll('.faq-item').forEach(i => {
       i.classList.remove('open');
       i.querySelector('.faq-answer').style.maxHeight = '0';
+      i.querySelector('.faq-question').setAttribute('aria-expanded','false');
     });
-
     if (!isOpen) {
       item.classList.add('open');
-      const answer = item.querySelector('.faq-answer');
-      const inner = answer.querySelector('.faq-answer-inner');
-      answer.style.maxHeight = inner.scrollHeight + 40 + 'px';
+      const ans = item.querySelector('.faq-answer');
+      ans.style.maxHeight = ans.querySelector('.faq-answer-inner').scrollHeight + 32 + 'px';
+      q.setAttribute('aria-expanded','true');
     }
   });
+  q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); } });
 });
 
-// ============================================================
-// MODALS
-// ============================================================
+/* ══════════════════════
+   MODALS
+══════════════════════ */
 function openModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.add('open');
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.add('open');
   document.body.style.overflow = 'hidden';
+  m.querySelector('.modal-close')?.focus();
 }
-
 function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.remove('open');
+  const m = document.getElementById(id);
+  if (!m) return;
+  m.classList.remove('open');
   document.body.style.overflow = '';
 }
-
-// Close on overlay click
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.classList.remove('open');
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => {
+    if (e.target === o) {
+      o.classList.remove('open');
       document.body.style.overflow = '';
-      if (overlay.id === 'modal-subscribe') resetSubscribe();
+      if (o.id === 'modal-subscribe') resetSubscribe();
     }
   });
 });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(o => {
+      o.classList.remove('open');
+      document.body.style.overflow = '';
+      if (o.id === 'modal-subscribe') resetSubscribe();
+    });
+  }
+});
 
-// ============================================================
-// SUBSCRIBE MODAL — 2 Steps
-// ============================================================
+/* ══════════════════════
+   SUBSCRIBE 2-STEP
+══════════════════════ */
 function toggleAgreeBtn() {
   const checked = document.getElementById('terms-agree').checked;
   const btn = document.getElementById('agree-btn');
-  if (checked) {
-    btn.classList.remove('btn-disabled');
-    btn.style.pointerEvents = 'auto';
-  } else {
-    btn.classList.add('btn-disabled');
-    btn.style.pointerEvents = 'none';
-  }
+  btn.classList.toggle('btn-disabled', !checked);
+  btn.style.pointerEvents = checked ? 'auto' : 'none';
 }
 
 function generateCode() {
-  const digits = () => Math.floor(1000000 + Math.random() * 9000000).toString();
-  const letters = () => {
-    let s = '';
-    for (let i = 0; i < 7; i++) s += String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    return s;
-  };
-  return `clinic${digits()}pen${letters()}ab26`;
+  const d = () => String(Math.floor(1000000 + Math.random()*9000000));
+  const l = () => { let s=''; for(let i=0;i<7;i++) s+=String.fromCharCode(65+Math.floor(Math.random()*26)); return s; };
+  return `clinic${d()}pen${l()}ab26`;
 }
 
 function goToStep2() {
   if (!document.getElementById('terms-agree').checked) return;
-  
   document.getElementById('subscribe-step1').style.display = 'none';
-  document.getElementById('subscribe-step2').style.display = 'block';
-
+  const s2 = document.getElementById('subscribe-step2');
+  s2.style.display = 'block';
   const code = generateCode();
   document.getElementById('code-text').textContent = code;
-
   const msg = encodeURIComponent(`مرحباً، هذا كود الموافقة الخاص بعيادتي:\n\n${code}\n\nأرجو تفعيل حسابي في ClinicPen.`);
   document.getElementById('wa-link').href = `https://wa.me/WHATSAPP_NUMBER?text=${msg}`;
-
-  gsap.from('#subscribe-step2', { opacity: 0, y: 20, duration: 0.5, ease: 'power3.out' });
+  gsap.from(s2, { opacity:0, y:16, duration:.4, ease:'power3.out' });
 }
 
 function copyCode() {
@@ -2908,151 +2125,30 @@ function resetSubscribe() {
   }, 300);
 }
 
-// ============================================================
-// HELP TABS
-// ============================================================
+/* ══════════════════════
+   HELP TABS
+══════════════════════ */
 function switchTab(btn, tabId) {
-  document.querySelectorAll('.help-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.help-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   document.querySelectorAll('.help-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  const panel = document.getElementById(tabId);
-  if (panel) panel.classList.add('active');
+  btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+  document.getElementById(tabId)?.classList.add('active');
 }
 
-// ============================================================
-// SECTION ENTRANCE ANIMATIONS (extras)
-// ============================================================
-
-// Problems divider pop
-gsap.from('.divider-badge', {
-  scale: 0.8,
-  opacity: 0,
-  duration: 0.7,
-  ease: 'back.out(1.7)',
-  scrollTrigger: { trigger: '.divider-badge', start: 'top 85%' }
-});
-
-// Pricing card pop
-gsap.from('.pricing-card', {
-  y: 40,
-  opacity: 0,
-  scale: 0.95,
-  duration: 0.8,
-  ease: 'back.out(1.4)',
-  scrollTrigger: { trigger: '.pricing-card', start: 'top 82%' }
-});
-
-// Browser frame tilt on scroll
-ScrollTrigger.create({
-  trigger: '.browser-frame',
-  start: 'top 80%',
-  onEnter: () => {
-    gsap.from('.browser-frame', {
-      y: 60,
-      opacity: 0,
-      rotationX: 8,
-      duration: 1,
-      ease: 'power3.out',
-      transformPerspective: 800
+/* ══════════════════════
+   MAGNETIC BUTTONS (desktop only)
+══════════════════════ */
+if (window.innerWidth > 768) {
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      gsap.to(btn, { x:(e.clientX-r.left-r.width/2)*.2, y:(e.clientY-r.top-r.height/2)*.2, duration:.3, ease:'power2.out' });
     });
-  }
-});
-
-// Step cards stagger
-gsap.from('.step-card', {
-  y: 50,
-  opacity: 0,
-  duration: 0.7,
-  stagger: 0.15,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.steps-wrapper', start: 'top 80%' }
-});
-
-// Feature cards stagger
-gsap.from('.feature-card', {
-  y: 40,
-  opacity: 0,
-  duration: 0.6,
-  stagger: 0.1,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.features-grid', start: 'top 80%' }
-});
-
-// Gallery cards stagger
-gsap.from('.gallery-card', {
-  y: 40,
-  opacity: 0,
-  scale: 0.95,
-  duration: 0.6,
-  stagger: 0.1,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.gallery-grid', start: 'top 80%' }
-});
-
-// Problems / solutions stagger
-gsap.from('.problem-card', {
-  x: 30,
-  opacity: 0,
-  duration: 0.5,
-  stagger: 0.08,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.problems-grid', start: 'top 80%' }
-});
-
-gsap.from('.solution-card', {
-  x: -30,
-  opacity: 0,
-  duration: 0.5,
-  stagger: 0.08,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '.solutions-grid', start: 'top 80%' }
-});
-
-// CTA section
-gsap.from('.cta-final-content h2', {
-  y: 40,
-  opacity: 0,
-  duration: 0.8,
-  ease: 'power3.out',
-  scrollTrigger: { trigger: '#cta-final', start: 'top 80%' }
-});
-
-// ============================================================
-// SMOOTH SCROLL FOR NAV LINKS
-// ============================================================
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', (e) => {
-    const id = a.getAttribute('href');
-    if (id === '#') return;
-    const target = document.querySelector(id);
-    if (target) {
-      e.preventDefault();
-      gsap.to(window, {
-        scrollTo: { y: target, offsetY: 80 },
-        duration: 0.9,
-        ease: 'power3.inOut'
-      });
-    }
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x:0, y:0, duration:.5, ease:'elastic.out(1,.5)' });
+    });
   });
-});
-
-// ============================================================
-// MAGNETIC EFFECT on primary buttons
-// ============================================================
-document.querySelectorAll('.btn-primary').forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) * 0.25;
-    const dy = (e.clientY - cy) * 0.25;
-    gsap.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out' });
-  });
-  btn.addEventListener('mouseleave', () => {
-    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.5)' });
-  });
-});
-
+}
 </script>
 </body>
 </html>
