@@ -222,11 +222,16 @@ section { padding: 88px 0; position: relative; }
 }
 .nav-logo-icon {
   width: 36px; height: 36px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border-radius: 10px;
+  /* background: linear-gradient(135deg, var(--primary), var(--primary-dark)); */
+  border-radius: 50px;
   display: flex; align-items: center; justify-content: center;
   color: white; font-size: .95rem;
 }
+
+.nav-logo-icon img {
+ border-radius: 10px;
+}
+
 .nav-logo-text {
   font-size: 1.25rem; font-weight: 900;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -334,15 +339,15 @@ section { padding: 88px 0; position: relative; }
   width: 100%;
 }
 .hero-logo-icon {
-  width: 72px; height: 72px;
-  background: rgba(255,255,255,.1);
+  width: 200px; height: 72px;
+   /*background: rgba(255,255,255,.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,.2);
-  border-radius: 20px;
+  border-radius: 20px; */
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 28px;
   font-size: 1.8rem; color: white;
-  box-shadow: 0 8px 28px rgba(88,101,242,.35);
+  /* box-shadow: 0 8px 28px rgba(88,101,242,.35);/ */
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 7px;
@@ -1014,7 +1019,7 @@ footer { background: var(--primary-deep); color: rgba(255,255,255,.55); padding:
 
   /* Hero */
   .hero-content { padding: 96px 16px 80px; }
-  .hero-logo-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+  .hero-logo-icon { width: 150px; height: 60px; font-size: 1.5rem; }
   .hero-title { font-size: clamp(1.7rem,8vw,2.4rem); }
   .hero-sub { font-size: .92rem; }
   .hero-buttons { flex-direction: column; width: 100%; }
@@ -1068,7 +1073,10 @@ footer { background: var(--primary-deep); color: rgba(255,255,255,.55); padding:
 <nav id="navbar" role="navigation" aria-label="القائمة الرئيسية">
   <div class="nav-inner">
     <div class="nav-logo">
-      <div class="nav-logo-icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></div>
+      <div class="nav-logo-icon" aria-hidden="true">
+        <img src="./icons/web-app-manifest-192x192.png" alt="">
+        <!-- <i class="fa-solid fa-pen-nib"></i>/ -->
+      </div>
       <span class="nav-logo-text">ClinicPen</span>
     </div>
 
@@ -1129,7 +1137,8 @@ footer { background: var(--primary-deep); color: rgba(255,255,255,.55); padding:
 
   <div class="hero-content">
     <div class="hero-logo-icon" aria-hidden="true">
-      <i class="fa-solid fa-pen-nib"></i>
+      <img src=".//icons/1774855520815.png.png" alt="">
+      <!-- <i class="fa-solid fa-pen-nib"></i> -->
     </div>
     <div class="hero-badge" role="note">
       <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
@@ -1339,7 +1348,7 @@ footer { background: var(--primary-deep); color: rgba(255,255,255,.55); padding:
     <div class="section-header">
       <span class="section-label">لقطات من النظام</span>
       <h2 class="section-title" id="carousel-title">اكتشف كل صفحة بنفسك</h2>
-     <!---<p class="section-sub">اسحب يميناً أو يساراً لاستعراض صفحات ClinicPen الست.</p>-->
+      <p class="section-sub">اسحب يميناً أو يساراً لاستعراض صفحات ClinicPen الست.</p>
     </div>
     <div class="carousel-wrapper">
       <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="السابق">
@@ -1836,45 +1845,99 @@ gsap.timeline({ delay: .1 })
 
 gsap.to('.scroll-arrow', { y:6, duration:1.1, repeat:-1, yoyo:true, ease:'sine.inOut' });
 
-/* ══════════════════════
-   SCROLL ANIMATIONS — Fast, no white-flash
-   Key: start:"top 95%" so elements animate
-   before they even enter view fully
-══════════════════════ */
-function revealBatch(selector, fromVars, stagger = .07) {
+/* ══════════════════════════════════════════════════════════
+   SCROLL ANIMATIONS
+   Strategy: CSS sets initial invisible state on each element.
+   GSAP ScrollTrigger fires per-element when it actually enters
+   the viewport at "top 78%" — elegant timing, no early flash.
+   Groups (cards in a row) use staggered delay by index.
+══════════════════════════════════════════════════════════ */
+
+/* — Set initial hidden state via CSS class, not GSAP "from" —
+   This prevents the FOUC (flash of un-animated content).      */
+const REVEAL_HIDDEN = `
+  .rev { opacity:0; transform:translateY(28px); will-change:opacity,transform; }
+  .rev-scale { opacity:0; transform:scale(0.92) translateY(16px); will-change:opacity,transform; }
+  .rev-up-sm { opacity:0; transform:translateY(16px); will-change:opacity,transform; }
+`;
+const _revStyle = document.createElement('style');
+_revStyle.textContent = REVEAL_HIDDEN;
+document.head.appendChild(_revStyle);
+
+/* Mark elements with CSS classes before any paint */
+function markReveal(selector, cls='rev') {
+  document.querySelectorAll(selector).forEach(el => el.classList.add(cls));
+}
+markReveal('.section-label,  .section-title,  .section-sub');
+markReveal('.problem-card,   .solution-card,  .feature-card');
+markReveal('.gallery-card,   .faq-item,       .step-card');
+markReveal('.quick-action-btn');
+markReveal('.browser-frame,  .pricing-card');
+markReveal('.cta-final-content h2, .cta-final-content p, .cta-buttons');
+markReveal('.divider-badge', 'rev-scale');
+markReveal('.pricing-card',  'rev-scale');
+
+/* — Core animate function —
+   duration, ease tuned for a premium "slide into place" feel  */
+function animIn(el, delay = 0, cls = 'rev') {
+  const isScale = el.classList.contains('rev-scale');
+  const toVars = {
+    opacity:   1,
+    y:         0,
+    scale:     1,
+    duration:  isScale ? 0.65 : 0.7,
+    delay,
+    ease:      'expo.out',
+    clearProps: 'opacity,transform,will-change',
+    onComplete: () => el.classList.remove(cls)
+  };
+  gsap.to(el, toVars);
+}
+
+/* — Register each element's own ScrollTrigger — */
+function revealOnScroll(selector, staggerSec = 0, groupAttr = null) {
   const els = document.querySelectorAll(selector);
   if (!els.length) return;
-  ScrollTrigger.batch(els, {
-    start: 'top 95%',
-    onEnter: batch => {
-      gsap.from(batch, {
-        ...fromVars,
-        stagger,
-        ease: 'power3.out',
-        duration: fromVars.duration || .55,
-        clearProps: 'all'
+
+  /* Group siblings by their parent so stagger applies within a row/grid */
+  const groups = new Map();
+  els.forEach(el => {
+    const key = groupAttr ? el.closest(groupAttr) : el.parentElement;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(el);
+  });
+
+  groups.forEach(members => {
+    members.forEach((el, idx) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start:   'top 82%',   /* fires when element top hits 82% of viewport */
+        once:    true,
+        onEnter: () => animIn(el, idx * staggerSec)
       });
-    },
-    once: true
+    });
   });
 }
 
-revealBatch('.section-label',   { y:14, opacity:0, duration:.4 }, .05);
-revealBatch('.section-title',   { y:20, opacity:0, duration:.5 }, .05);
-revealBatch('.section-sub',     { y:14, opacity:0, duration:.45 }, .05);
-revealBatch('.problem-card',    { y:24, opacity:0, duration:.45 }, .06);
-revealBatch('.solution-card',   { y:24, opacity:0, duration:.45 }, .06);
-revealBatch('.feature-card',    { y:28, opacity:0, duration:.48 }, .07);
-revealBatch('.gallery-card',    { y:20, opacity:0, scale:.97, duration:.45 }, .06);
-revealBatch('.quick-action-btn',{ y:16, opacity:0, duration:.4 }, .07);
-revealBatch('.faq-item',        { y:16, opacity:0, duration:.4 }, .06);
-revealBatch('.pricing-card',    { y:28, opacity:0, scale:.97, duration:.55 }, 0);
-revealBatch('.divider-badge',   { scale:.85, opacity:0, duration:.5 }, 0);
-revealBatch('.step-card',       { y:28, opacity:0, duration:.5 }, .1);
-revealBatch('.browser-frame',   { y:32, opacity:0, duration:.6 }, 0);
-revealBatch('.cta-final-content h2', { y:24, opacity:0, duration:.6 }, 0);
-revealBatch('.cta-final-content p',  { y:16, opacity:0, duration:.5 }, 0);
-revealBatch('.cta-buttons',          { y:16, opacity:0, duration:.5 }, 0);
+/* Solo elements — no stagger */
+revealOnScroll('.section-label');
+revealOnScroll('.section-title');
+revealOnScroll('.section-sub');
+revealOnScroll('.browser-frame');
+revealOnScroll('.divider-badge');
+revealOnScroll('.pricing-card');
+revealOnScroll('.cta-final-content h2');
+revealOnScroll('.cta-final-content p');
+revealOnScroll('.cta-buttons');
+
+/* Grid cards — stagger within each grid parent */
+revealOnScroll('.problem-card',    0.07, '.problems-grid');
+revealOnScroll('.solution-card',   0.07, '.solutions-grid');
+revealOnScroll('.feature-card',    0.08, '.features-grid');
+revealOnScroll('.gallery-card',    0.07, '.gallery-grid');
+revealOnScroll('.step-card',       0.12, '.steps-wrapper');
+revealOnScroll('.quick-action-btn',0.08, '.quick-actions-inner');
+revealOnScroll('.faq-item',        0.06, '.faq-list');
 
 /* ══════════════════════
    NAVBAR
